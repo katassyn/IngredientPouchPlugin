@@ -1,0 +1,9 @@
+name: IngredientPouchPlugin
+version: '1.0-SNAPSHOT'
+main: com.maks.ingredientpouchplugin.IngredientPouchPlugin
+api-version: '1.20'
+commands:
+  ingredient_pouch:
+    description: Opens your ingredient pouch.
+    usage: /ingredient_pouch
+    aliases: [ipouch]

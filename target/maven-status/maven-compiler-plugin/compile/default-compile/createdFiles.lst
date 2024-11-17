@@ -1,0 +1,6 @@
+com\maks\ingredientpouchplugin\IngredientPouchPlugin.class
+com\maks\ingredientpouchplugin\ItemManager.class
+com\maks\ingredientpouchplugin\IngredientPouchCommand.class
+com\maks\ingredientpouchplugin\PouchListener.class
+com\maks\ingredientpouchplugin\DatabaseManager.class
+com\maks\ingredientpouchplugin\PouchGUI.class
