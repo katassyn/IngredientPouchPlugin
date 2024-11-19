@@ -1,4 +1,5 @@
 com\maks\ingredientpouchplugin\IngredientPouchPlugin.class
+com\maks\ingredientpouchplugin\ChatListener.class
 com\maks\ingredientpouchplugin\ItemManager.class
 com\maks\ingredientpouchplugin\IngredientPouchCommand.class
 com\maks\ingredientpouchplugin\PouchListener.class

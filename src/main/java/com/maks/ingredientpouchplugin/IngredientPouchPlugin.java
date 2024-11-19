@@ -1,54 +1,57 @@
-package com.maks.ingredientpouchplugin;
+//
+// Source code recreated from a .class file by IntelliJ IDEA
+// (powered by FernFlower decompiler)
+//
 
-import org.bukkit.plugin.java.JavaPlugin;
+package com.maks.ingredientpouchplugin;
 
 import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
+import org.bukkit.plugin.java.JavaPlugin;
 
 public class IngredientPouchPlugin extends JavaPlugin {
-
     private DatabaseManager databaseManager;
     private ItemManager itemManager;
     private Map<UUID, PouchGUI> pouchGuis;
+    private PouchListener pouchListener;
+    private ChatListener chatListener;
 
-    @Override
-    public void onEnable() {
-        // Save default config if it doesn't exist
-        saveDefaultConfig();
-
-        // Initialize database connection
-        databaseManager = new DatabaseManager(this);
-        databaseManager.init();
-
-        // Initialize item manager
-        itemManager = new ItemManager(this);
-
-        // Initialize pouch GUIs map
-        pouchGuis = new HashMap<>();
-
-        // Register command
-        getCommand("ingredient_pouch").setExecutor(new IngredientPouchCommand(this));
-
-        // Register the GUI listener
-        new PouchListener(this);
+    public IngredientPouchPlugin() {
     }
 
-    @Override
+    public void onEnable() {
+        this.saveDefaultConfig();
+        this.databaseManager = new DatabaseManager(this);
+        this.databaseManager.init();
+        this.itemManager = new ItemManager(this);
+        this.pouchGuis = new HashMap();
+        this.getCommand("ingredient_pouch").setExecutor(new IngredientPouchCommand(this));
+        this.pouchListener = new PouchListener(this);
+        this.chatListener = new ChatListener(this);
+    }
+
     public void onDisable() {
-        // Close database connection
-        databaseManager.close();
+        this.databaseManager.close();
     }
 
     public DatabaseManager getDatabaseManager() {
-        return databaseManager;
+        return this.databaseManager;
     }
 
     public ItemManager getItemManager() {
-        return itemManager;
+        return this.itemManager;
     }
 
     public Map<UUID, PouchGUI> getPouchGuis() {
-        return pouchGuis;
+        return this.pouchGuis;
+    }
+
+    public PouchListener getPouchListener() {
+        return this.pouchListener;
+    }
+
+    public ChatListener getChatListener() {
+        return this.chatListener;
     }
 }
