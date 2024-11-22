@@ -34,7 +34,7 @@ public class ItemManager {
         addItem("deaddd_bush", Material.DEAD_BUSH, "&2Dead Bush", "EXPO", "&7&oCrafting and Quest resource");
         addItem("demon_blood", Material.RED_DYE, "&dDemon Blood", "EXPO", "&7&oCrafting and Quest resource");
         addItem("sticky_mucus", Material.SLIME_BALL, "&dSticky Mucus", "EXPO", "&7&oCrafting and Quest resource");
-        addItem("soul_of_an_acient_spartan", Material.PITCHER_POD, "&dSoul of an Ancient Spartan", "EXPO", "&7&oCrafting and Quest resource");
+        addItem("soul_of_an_acient_spartan", Material.PITCHER_POD, "&dSoul of an Acient Spartan", "EXPO", "&7&oCrafting and Quest resource");
         addItem("shadow_rose", Material.WITHER_ROSE, "&dShadow Rose", "EXPO", "&7&oCrafting and Quest resource");
         addItem("Throphy_of_the_long_forgotten_bone_dragon", Material.DRAGON_HEAD, "&dThrophy of the Long Forgotten Bone Dragon", "EXPO", "&7&oCrafting and Quest resource");
 
