@@ -27,21 +27,21 @@ public class ItemManager {
         addItem("fur_black", Material.RABBIT_HIDE, "&2Black Fur", "EXPO", "&7&oCrafting and Quest resource");
         addItem("dragon_scale", Material.PHANTOM_MEMBRANE, "&2Dragon Scale", "EXPO", "&7&oCrafting and Quest resource");
         addItem("chain_fragment", Material.CHAIN, "&2Chain Fragment", "EXPO", "&7&oCrafting and Quest resource");
-        addItem("satyrs_horn", Material.POINTED_DRIPSTONE, "&2Satyrs Horn", "EXPO", "&7&oCrafting and Quest resource");
-        addItem("gorgons_poison", Material.SCUTE, "&2Gorgons Poison", "EXPO", "&7&oCrafting and Quest resource");
-        addItem("dragon_gold", Material.GOLD_INGOT, "&2Dragons Gold", "EXPO", "&7&oCrafting and Quest resource");
-        addItem("protectors_heart", Material.ORANGE_DYE, "&2Protectors Heart", "EXPO", "&7&oCrafting and Quest resource");
+        addItem("satyrs_horn", Material.POINTED_DRIPSTONE, "&2Satyr`s Horn", "EXPO", "&7&oCrafting and Quest resource");
+        addItem("gorgons_poison", Material.SCUTE, "&2Gorgon`s Poison", "EXPO", "&7&oCrafting and Quest resource");
+        addItem("dragon_gold", Material.GOLD_INGOT, "&2Dragon`s Gold", "EXPO", "&7&oCrafting and Quest resource");
+        addItem("protectors_heart", Material.ORANGE_DYE, "&2Protector`s Heart", "EXPO", "&7&oCrafting and Quest resource");
         addItem("deaddd_bush", Material.DEAD_BUSH, "&2Dead Bush", "EXPO", "&7&oCrafting and Quest resource");
         addItem("demon_blood", Material.RED_DYE, "&dDemon Blood", "EXPO", "&7&oCrafting and Quest resource");
         addItem("sticky_mucus", Material.SLIME_BALL, "&dSticky Mucus", "EXPO", "&7&oCrafting and Quest resource");
         addItem("soul_of_an_acient_spartan", Material.PITCHER_POD, "&dSoul of an Ancient Spartan", "EXPO", "&7&oCrafting and Quest resource");
         addItem("shadow_rose", Material.WITHER_ROSE, "&dShadow Rose", "EXPO", "&7&oCrafting and Quest resource");
-        addItem("throphy_of_the_long_forgotten_bone_dragon", Material.DRAGON_HEAD, "&dTrophy of the Long Forgotten Bone Dragon", "EXPO", "&7&oCrafting and Quest resource");
+        addItem("Throphy_of_the_long_forgotten_bone_dragon", Material.DRAGON_HEAD, "&dThrophy of the Long Forgotten Bone Dragon", "EXPO", "&7&oCrafting and Quest resource");
 
         // Przedmioty z kategorii Q (Quest)
-        addItem("mob_soul_I", Material.FLINT, "&9[ I ] Monster Soul Fragment", "Q", "&7&oBasic crafting material ");
-        addItem("mob_soul_II", Material.FLINT, "&5[ II ] Monster Soul Fragment", "Q", "&7&oBasic crafting material ");
-        addItem("mob_soul_III", Material.FLINT, "&6[ III ] Monster Soul Fragment", "Q", "&7&oBasic crafting material ");
+        addItem("mob_soul_I", Material.FLINT, "&9[ I ] Monster Soul Fragment", "Q", "&7&oBasic crafting material");
+        addItem("mob_soul_II", Material.FLINT, "&5[ II ] Monster Soul Fragment", "Q", "&7&oBasic crafting material");
+        addItem("mob_soul_III", Material.FLINT, "&6&6[ III ] Monster Soul Fragment ", "Q", "&7&oBasic crafting material");
 
         addItem("elite_heart_I", Material.NETHER_WART, "&9[ I ] Monster Heart Fragment", "Q", "&a&oRare crafting material");
         addItem("elite_heart_II", Material.NETHER_WART, "&5[ II ] Monster Heart Fragment", "Q", "&a&oRare crafting material");
@@ -119,7 +119,7 @@ public class ItemManager {
 
         // Przedmioty z kategorii CURRENCY (Waluty)
         addItem("draken", Material.GLISTERING_MELON_SLICE, "&e&lDrakenMelon", "CURRENCY", "&7&oEvent currency");
-        addItem("clover", Material.SUNFLOWER, "&6&lGilded Sunflower", "CURRENCY", "&7&oUnique currency");
+        addItem("clover", Material.SUNFLOWER, "&6&lGlided Sunflower", "CURRENCY", "&7&oUnique currency");
         addItem("andermant", Material.SMALL_AMETHYST_BUD, "&5&lAndermant", "CURRENCY", "&7&oPremium currency");
 
         plugin.getLogger().info("Loaded " + items.size() + " items.");
