@@ -5,6 +5,7 @@ import org.bukkit.Material;
 import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.*;
 
@@ -126,7 +127,7 @@ public class ItemManager {
     }
 
 
-    private void addItem(String itemId, Material material, String displayName, String category, String loreText) {
+    private void addItem(String itemId, Material material, String displayName, @NotNull String category, String loreText) {
         ItemStack item = new ItemStack(material);
         ItemMeta meta = item.getItemMeta();
 
