@@ -1,18 +1,14 @@
-//
-// Source code recreated from a .class file by IntelliJ IDEA
-// (powered by FernFlower decompiler)
-//
-
 package com.maks.ingredientpouchplugin;
 
+import com.zaxxer.hikari.HikariConfig;
+import com.zaxxer.hikari.HikariDataSource;
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
 
 public class DatabaseManager {
     private final IngredientPouchPlugin plugin;
-    private Connection connection;
+    private HikariDataSource dataSource;
 
     public DatabaseManager(IngredientPouchPlugin plugin) {
         this.plugin = plugin;
@@ -24,67 +20,66 @@ public class DatabaseManager {
         String database = this.plugin.getConfig().getString("database.name");
         String user = this.plugin.getConfig().getString("database.user");
         String password = this.plugin.getConfig().getString("database.password");
-        String url = "jdbc:mysql://" + host + ":" + port + "/" + database + "?useSSL=false";
+        String url = "jdbc:mysql://" + host + ":" + port + "/" + database;
+
+        HikariConfig config = new HikariConfig();
+        config.setJdbcUrl(url);
+        config.setUsername(user);
+        config.setPassword(password);
+
+        // HikariCP specific configuration
+        config.setMaximumPoolSize(10);
+        config.setMinimumIdle(5);
+        config.setIdleTimeout(300000); // 5 minutes
+        config.setConnectionTimeout(10000); // 10 seconds
+        config.setValidationTimeout(5000); // 5 seconds
+        config.addDataSourceProperty("cachePrepStmts", "true");
+        config.addDataSourceProperty("prepStmtCacheSize", "250");
+        config.addDataSourceProperty("prepStmtCacheSqlLimit", "2048");
+        config.addDataSourceProperty("useServerPrepStmts", "true");
+        config.addDataSourceProperty("useLocalSessionState", "true");
+        config.addDataSourceProperty("rewriteBatchedStatements", "true");
+        config.addDataSourceProperty("cacheResultSetMetadata", "true");
+        config.addDataSourceProperty("cacheServerConfiguration", "true");
+        config.addDataSourceProperty("elideSetAutoCommits", "true");
+        config.addDataSourceProperty("maintainTimeStats", "false");
+        config.addDataSourceProperty("useSSL", "false");
 
         try {
-            this.connection = DriverManager.getConnection(url, user, password);
-            this.plugin.getLogger().info("Database connected successfully.");
+            dataSource = new HikariDataSource(config);
+            this.plugin.getLogger().info("Database connection pool initialized successfully.");
             this.createTable();
-        } catch (SQLException var8) {
-            SQLException e = var8;
-            this.plugin.getLogger().severe("Could not connect to the database!");
+        } catch (Exception e) {
+            this.plugin.getLogger().severe("Could not initialize database connection pool!");
             e.printStackTrace();
         }
-
     }
 
     private void createTable() {
-        String sql = "CREATE TABLE IF NOT EXISTS player_pouch (player_uuid VARCHAR(36),item_id VARCHAR(255),quantity INT,PRIMARY KEY(player_uuid, item_id));";
+        String sql = "CREATE TABLE IF NOT EXISTS player_pouch ("
+                + "player_uuid VARCHAR(36),"
+                + "item_id VARCHAR(255),"
+                + "quantity INT,"
+                + "PRIMARY KEY(player_uuid, item_id));";
 
-        try {
-            Statement stmt = this.connection.createStatement();
-
-            try {
-                stmt.executeUpdate(sql);
-                this.plugin.getLogger().info("Database table ensured.");
-            } catch (Throwable var6) {
-                if (stmt != null) {
-                    try {
-                        stmt.close();
-                    } catch (Throwable var5) {
-                        var6.addSuppressed(var5);
-                    }
-                }
-
-                throw var6;
-            }
-
-            if (stmt != null) {
-                stmt.close();
-            }
-        } catch (SQLException var7) {
-            SQLException e = var7;
+        try (Connection conn = getConnection();
+             Statement stmt = conn.createStatement()) {
+            stmt.executeUpdate(sql);
+            this.plugin.getLogger().info("Database table ensured.");
+        } catch (SQLException e) {
             this.plugin.getLogger().severe("Could not create the database table!");
             e.printStackTrace();
         }
-
     }
 
-    public Connection getConnection() {
-        return this.connection;
+    public Connection getConnection() throws SQLException {
+        return dataSource.getConnection();
     }
 
     public void close() {
-        if (this.connection != null) {
-            try {
-                this.connection.close();
-                this.plugin.getLogger().info("Database connection closed.");
-            } catch (SQLException var2) {
-                SQLException e = var2;
-                this.plugin.getLogger().severe("Error closing the database connection!");
-                e.printStackTrace();
-            }
+        if (dataSource != null && !dataSource.isClosed()) {
+            dataSource.close();
+            this.plugin.getLogger().info("Database connection pool closed.");
         }
-
     }
 }

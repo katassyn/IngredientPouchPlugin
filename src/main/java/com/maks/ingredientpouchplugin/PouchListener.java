@@ -10,6 +10,7 @@ import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
+import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -245,7 +246,8 @@ public class PouchListener implements Listener {
     private int getCurrentQuantity(String playerUUID, String itemId) {
         String sql = "SELECT quantity FROM player_pouch WHERE player_uuid = ? AND item_id = ?";
 
-        try (PreparedStatement stmt = this.plugin.getDatabaseManager().getConnection().prepareStatement(sql)) {
+        try (Connection conn = this.plugin.getDatabaseManager().getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
             stmt.setString(1, playerUUID);
             stmt.setString(2, itemId);
             try (ResultSet rs = stmt.executeQuery()) {
@@ -263,11 +265,10 @@ public class PouchListener implements Listener {
      * Zwiększa/zmniejsza ilość itemId w sakwie o "amount" (może być ujemne).
      */
     private void updatePlayerQuantity(String playerUUID, String itemId, int amount) {
-        // Wstawiamy lub aktualizujemy w DB
         String sql = "INSERT INTO player_pouch (player_uuid, item_id, quantity) VALUES (?, ?, ?) "
                 + "ON DUPLICATE KEY UPDATE quantity = GREATEST(quantity + ?, 0)";
-        try (PreparedStatement stmt = this.plugin.getDatabaseManager().getConnection().prepareStatement(sql)) {
-            // Jeżeli amount > 0, to wstawiamy amount, jeżeli < 0, to wstawiamy 0 przy INSERT
+        try (Connection conn = this.plugin.getDatabaseManager().getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
             stmt.setString(1, playerUUID);
             stmt.setString(2, itemId);
             stmt.setInt(3, Math.max(amount, 0));
