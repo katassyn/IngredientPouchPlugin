@@ -5,6 +5,9 @@
 
 package com.maks.ingredientpouchplugin;
 
+import com.maks.ingredientpouchplugin.api.PouchAPI;
+import com.maks.ingredientpouchplugin.api.PouchAPIImpl;
+
 import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
@@ -16,6 +19,7 @@ public class IngredientPouchPlugin extends JavaPlugin {
     private Map<UUID, PouchGUI> pouchGuis;
     private PouchListener pouchListener;
     private ChatListener chatListener;
+    private PouchAPI api; // New API field
 
     public IngredientPouchPlugin() {
     }
@@ -29,6 +33,14 @@ public class IngredientPouchPlugin extends JavaPlugin {
         this.getCommand("ingredient_pouch").setExecutor(new IngredientPouchCommand(this));
         this.pouchListener = new PouchListener(this);
         this.chatListener = new ChatListener(this);
+
+        // Register the ItemPickupListener
+        new ItemPickupListener(this);
+
+        // Initialize the API
+        this.api = new PouchAPIImpl(this);
+
+        getLogger().info("IngredientPouch API initialized and ready for other plugins to use.");
     }
 
     public void onDisable() {
@@ -53,5 +65,13 @@ public class IngredientPouchPlugin extends JavaPlugin {
 
     public ChatListener getChatListener() {
         return this.chatListener;
+    }
+
+    /**
+     * Get the API for interacting with the IngredientPouch plugin
+     * @return The API interface
+     */
+    public PouchAPI getAPI() {
+        return this.api;
     }
 }

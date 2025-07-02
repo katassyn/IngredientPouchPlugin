@@ -32,20 +32,77 @@ public class PouchGUI {
     }
 
     private void groupItemsByCategory() {
+        final int debuggingFlag = 1; // Set to 0 when everything is working properly
+
         Map<String, List<String>> categoryItems = new LinkedHashMap<>();
 
-        for (String itemId : this.plugin.getItemManager().getItemIds()) {
+        // Use LinkedHashMap to preserve insertion order
+        List<String> orderedItemIds = new ArrayList<>(this.plugin.getItemManager().getItemIds());
+
+        // Group items by category while preserving their original order
+        for (String itemId : orderedItemIds) {
             String category = this.plugin.getItemManager().getItemCategory(itemId);
             categoryItems.computeIfAbsent(category, k -> new ArrayList<>()).add(itemId);
         }
 
         int pageIndex = 1;
-        List<String> categories = new ArrayList<>(categoryItems.keySet());
-        Collections.sort(categories);
 
-        for (String category : categories) {
+        // Define specific category order: 1-CURRENCY, 2-EXPO, 3-MONSTER_FRAGMENTS, 4-Q, 5-KOPALNIA, 6-LOWISKO
+        List<String> orderedCategories = new ArrayList<>();
+        String[] categoryOrder = {"CURRENCY", "EXPO", "MONSTER_FRAGMENTS", "Q", "KOPALNIA", "LOWISKO"};
+
+        // Add categories in specified order
+        for (String category : categoryOrder) {
+            if (categoryItems.containsKey(category)) {
+                orderedCategories.add(category);
+            }
+        }
+
+        // Add any remaining categories alphabetically
+        List<String> remainingCategories = new ArrayList<>(categoryItems.keySet());
+        remainingCategories.removeAll(orderedCategories);
+        Collections.sort(remainingCategories);
+        orderedCategories.addAll(remainingCategories);
+
+        for (String category : orderedCategories) {
             List<String> items = categoryItems.get(category);
-            Collections.sort(items);
+
+            if (debuggingFlag == 1) {
+                this.plugin.getLogger().info("[DEBUG] Processing category: " + category);
+                this.plugin.getLogger().info("[DEBUG] Items before sorting: " + String.join(", ", items));
+            }
+
+            // Sort items to keep same base items together, then by tier
+            Collections.sort(items, (item1, item2) -> {
+                // Get base ID by removing tier suffix
+                String baseId1 = getBaseId(item1);
+                String baseId2 = getBaseId(item2);
+
+                if (debuggingFlag == 1) {
+                    this.plugin.getLogger().info("[DEBUG] Comparing: " + item1 + " and " + item2);
+                    this.plugin.getLogger().info("[DEBUG] Base IDs: " + baseId1 + " and " + baseId2);
+                }
+
+                // First compare by base ID (alphabetically)
+                int baseComparison = baseId1.compareTo(baseId2);
+                if (baseComparison != 0) {
+                    return baseComparison;
+                }
+
+                // If base IDs are the same, sort by tier level (I < II < III)
+                int tier1 = getTierLevel(item1);
+                int tier2 = getTierLevel(item2);
+
+                if (debuggingFlag == 1) {
+                    this.plugin.getLogger().info("[DEBUG] Same base ID, tiers: " + tier1 + " and " + tier2);
+                }
+
+                return Integer.compare(tier1, tier2);
+            });
+
+            if (debuggingFlag == 1) {
+                this.plugin.getLogger().info("[DEBUG] Items after sorting: " + String.join(", ", items));
+            }
 
             for (int fromIndex = 0; fromIndex < items.size(); fromIndex += ITEM_SLOTS.length) {
                 int toIndex = Math.min(fromIndex + ITEM_SLOTS.length, items.size());
@@ -239,5 +296,80 @@ public class PouchGUI {
             e.printStackTrace();
         }
         return 0;
+    }
+
+    /**
+     * Extracts the tier information from an item name.
+     * Looks for patterns like [I], [II], [III] in the item name.
+     * 
+     * @param itemName The display name of the item
+     * @return The tier string, or empty string if no tier is found
+     */
+    private String extractTier(String itemName) {
+        // Look for [I], [II], [III] pattern in the name
+        if (itemName == null) {
+            return "";
+        }
+
+        // Use regex to find the tier in square brackets
+        java.util.regex.Pattern pattern = java.util.regex.Pattern.compile("\\[(.*?)\\]");
+        java.util.regex.Matcher matcher = pattern.matcher(itemName);
+
+        if (matcher.find()) {
+            return matcher.group(1).trim();
+        }
+
+        return "";
+    }
+
+    /**
+     * Converts Roman numeral to integer.
+     * Handles I, II, III for tier conversion.
+     * 
+     * @param roman The Roman numeral string
+     * @return The integer value, or 0 if invalid
+     */
+    private int romanToInt(String roman) {
+        if (roman == null || roman.isEmpty()) {
+            return 0;
+        }
+
+        roman = roman.trim();
+
+        // Simple conversion for our limited use case
+        switch (roman) {
+            case "I":
+                return 1;
+            case "II":
+                return 2;
+            case "III":
+                return 3;
+            default:
+                // Try to parse as integer if it's not a Roman numeral
+                try {
+                    return Integer.parseInt(roman);
+                } catch (NumberFormatException e) {
+                    return 0;
+                }
+        }
+    }
+
+    // Helper method to extract the base ID (without tier suffix)
+    private String getBaseId(String itemId) {
+        if (itemId.endsWith("_I") || itemId.endsWith("_II") || itemId.endsWith("_III")) {
+            int lastUnderscoreIndex = itemId.lastIndexOf('_');
+            if (lastUnderscoreIndex != -1) {
+                return itemId.substring(0, lastUnderscoreIndex);
+            }
+        }
+        return itemId;
+    }
+
+    // Helper method to get the tier level (I=1, II=2, III=3)
+    private int getTierLevel(String itemId) {
+        if (itemId.endsWith("_I")) return 1;
+        if (itemId.endsWith("_II")) return 2;
+        if (itemId.endsWith("_III")) return 3;
+        return 0; // No tier or unable to determine
     }
 }

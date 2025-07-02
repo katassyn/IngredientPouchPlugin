@@ -243,7 +243,7 @@ public class PouchListener implements Listener {
     /**
      * Pobiera bieżącą ilość itemId w sakwie (z bazy) dla danego gracza.
      */
-    private int getCurrentQuantity(String playerUUID, String itemId) {
+    public int getCurrentQuantity(String playerUUID, String itemId) {
         String sql = "SELECT quantity FROM player_pouch WHERE player_uuid = ? AND item_id = ?";
 
         try (Connection conn = this.plugin.getDatabaseManager().getConnection();
@@ -264,7 +264,7 @@ public class PouchListener implements Listener {
     /**
      * Zwiększa/zmniejsza ilość itemId w sakwie o "amount" (może być ujemne).
      */
-    private void updatePlayerQuantity(String playerUUID, String itemId, int amount) {
+    public void updatePlayerQuantity(String playerUUID, String itemId, int amount) {
         String sql = "INSERT INTO player_pouch (player_uuid, item_id, quantity) VALUES (?, ?, ?) "
                 + "ON DUPLICATE KEY UPDATE quantity = GREATEST(quantity + ?, 0)";
         try (Connection conn = this.plugin.getDatabaseManager().getConnection();
@@ -320,7 +320,7 @@ public class PouchListener implements Listener {
      * Porównuje, czy invItem i itemToMatch są identyczne (materiał, nazwa, lore).
      * Usuwa też ewentualną linię "You have:" z lore2 do porównania.
      */
-    private boolean areItemsSimilar(ItemStack item1, ItemStack item2) {
+    public boolean areItemsSimilar(ItemStack item1, ItemStack item2) {
         if (item1 == null || item2 == null) return false;
         if (item1.getType() != item2.getType()) return false;
 

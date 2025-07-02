@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/IngredientPouchPlugin.iml" filepath="$PROJECT_DIR$/IngredientPouchPlugin.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/IngredientPouchPlugin.iml" filepath="$PROJECT_DIR$/.idea/IngredientPouchPlugin.iml" />
     </modules>
   </component>
 </project>

@@ -1,7 +1,12 @@
 com\maks\ingredientpouchplugin\IngredientPouchPlugin.class
 com\maks\ingredientpouchplugin\ChatListener.class
-com\maks\ingredientpouchplugin\ItemManager.class
+com\maks\ingredientpouchplugin\api\PouchAPIImpl.class
 com\maks\ingredientpouchplugin\IngredientPouchCommand.class
+com\maks\ingredientpouchplugin\PouchGUI.class
+com\maks\mycraftingplugin2\integration\PouchIntegrationHelper.class
+com\maks\mycraftingplugin2\TestPouchCommand.class
+com\maks\ingredientpouchplugin\api\PouchAPI.class
+com\maks\ingredientpouchplugin\ItemManager.class
+com\maks\mycraftingplugin2\integration\PouchItemMappings.class
 com\maks\ingredientpouchplugin\PouchListener.class
 com\maks\ingredientpouchplugin\DatabaseManager.class
-com\maks\ingredientpouchplugin\PouchGUI.class

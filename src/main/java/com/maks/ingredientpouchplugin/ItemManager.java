@@ -39,15 +39,15 @@ public class ItemManager {
         addItem("shadow_rose", Material.WITHER_ROSE, "&dShadow Rose", "EXPO", "&7&oCrafting and Quest resource");
         addItem("Throphy_of_the_long_forgotten_bone_dragon", Material.DRAGON_HEAD, "&dThrophy of the Long Forgotten Bone Dragon", "EXPO", "&7&oCrafting and Quest resource");
 
-        // Przedmioty z kategorii Q (Quest)
-        addItem("mob_soul_I", Material.FLINT, "&9[ I ] Monster Soul Fragment", "Q", "&7&oBasic crafting material");
-        addItem("mob_soul_II", Material.FLINT, "&5[ II ] Monster Soul Fragment", "Q", "&7&oBasic crafting material");
-        addItem("mob_soul_III", Material.FLINT, "&6&6[ III ] Monster Soul Fragment ", "Q", "&7&oBasic crafting material");
+        // Przedmioty z kategorii MONSTER_FRAGMENTS
+        addItem("mob_soul_I", Material.FLINT, "&9[ I ] Monster Soul Fragment", "MONSTER_FRAGMENTS", "&7&oBasic crafting material");
+        addItem("mob_soul_II", Material.FLINT, "&5[ II ] Monster Soul Fragment", "MONSTER_FRAGMENTS", "&7&oBasic crafting material");
+        addItem("mob_soul_III", Material.FLINT, "&6&6[ III ] Monster Soul Fragment ", "MONSTER_FRAGMENTS", "&7&oBasic crafting material");
 
-        addItem("elite_heart_I", Material.NETHER_WART, "&9[ I ] Monster Heart Fragment", "Q", "&a&oRare crafting material");
-        addItem("elite_heart_II", Material.NETHER_WART, "&5[ II ] Monster Heart Fragment", "Q", "&a&oRare crafting material");
-        addItem("elite_heart_III", Material.NETHER_WART, "&6[ III ] Monster Heart Fragment", "Q", "&a&oRare crafting material");
-
+        addItem("elite_heart_I", Material.NETHER_WART, "&9[ I ] Monster Heart Fragment", "MONSTER_FRAGMENTS", "&a&oRare crafting material");
+        addItem("elite_heart_II", Material.NETHER_WART, "&5[ II ] Monster Heart Fragment", "MONSTER_FRAGMENTS", "&a&oRare crafting material");
+        addItem("elite_heart_III", Material.NETHER_WART, "&6[ III ] Monster Heart Fragment", "MONSTER_FRAGMENTS", "&a&oRare crafting material");
+        // Przedmioty z kategorii Q - bossy
         addItem("grimmag_frag_I", Material.LEATHER, "&9[ I ] Grimmage Burned Cape", "Q", "&c&oLegendary crafting material");
         addItem("grimmag_frag_II", Material.LEATHER, "&5[ II ] Grimmage Burned Cape", "Q", "&c&oLegendary crafting material");
         addItem("grimmag_frag_III", Material.LEATHER, "&6[ III ] Grimmage Burned Cape", "Q", "&c&oLegendary crafting material");
@@ -122,6 +122,10 @@ public class ItemManager {
         addItem("draken", Material.GLISTERING_MELON_SLICE, "&e&lDrakenMelon", "CURRENCY", "&7&oEvent currency");
         addItem("clover", Material.SUNFLOWER, "&6&lGlided Sunflower", "CURRENCY", "&7&oUnique currency");
         addItem("andermant", Material.SMALL_AMETHYST_BUD, "&5&lAndermant", "CURRENCY", "&7&oPremium currency");
+        addItem("lockpick", Material.GREEN_DYE,"&8&lLockpick", "CURRENCY", "&7&oUsed to unlock mysterious chests");
+        addItem("jewel_dust", Material.INK_SAC, "§9Jewel Dust", "CURRENCY", "&7&oUsed to upgrade jewels");
+        addItem("shiny_dust", Material.GLOW_INK_SAC, "§5Shiny Dust", "CURRENCY", "&7&oUsed to upgrade gems");
+        addItem("rune_dust", Material.CLAY_BALL, "§cRune Dust", "CURRENCY", "&7&oUsed to upgrade runes");
 
         plugin.getLogger().info("Loaded " + items.size() + " items.");
     }
