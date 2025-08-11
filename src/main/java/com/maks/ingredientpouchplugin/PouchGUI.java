@@ -49,7 +49,7 @@ public class PouchGUI {
 
         // Define specific category order: 1-CURRENCY, 2-EXPO, 3-MONSTER_FRAGMENTS, 4-Q, 5-KOPALNIA, 6-LOWISKO
         List<String> orderedCategories = new ArrayList<>();
-        String[] categoryOrder = {"CURRENCY", "EXPO", "MONSTER_FRAGMENTS", "Q", "KOPALNIA", "LOWISKO"};
+        String[] categoryOrder = {"CURRENCY", "EXPO", "MONSTER_FRAGMENTS", "Q", "KOPALNIA", "MINE", "LOWISKO"};
 
         // Add categories in specified order
         for (String category : categoryOrder) {

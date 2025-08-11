@@ -836,6 +836,301 @@ leaf_III:
     HideFlags: true
     Unbreakable: true
 
+# Przedmioty z kategorii MINE
+hematite:
+  Id: coal_ore
+  Display: '&8Hematite'
+  Group: mine
+  Category: MINE
+  Enchantments:
+    DURABILITY: 10
+  Lore:
+    - '&7A common black ore with metallic luster and reddish streaks.'
+    - '&eCoal-based mineral'
+  Options:
+    HideFlags: true
+    Unbreakable: true
+
+black_spinel:
+  Id: coal_ore
+  Display: '&8Black Spinel'
+  Group: mine
+  Category: MINE
+  Enchantments:
+    DURABILITY: 10
+  Lore:
+    - '&7An uncommon black crystal with exceptional hardness and luster.'
+    - '&eCoal-based gemstone'
+  Options:
+    HideFlags: true
+    Unbreakable: true
+
+black_diamond:
+  Id: coal_ore
+  Display: '&8&lBlack Diamond'
+  Group: mine
+  Category: MINE
+  Enchantments:
+    DURABILITY: 10
+  Lore:
+    - '&7A rare and precious black diamond formed under extreme pressure.'
+    - '&eHighest quality coal gem'
+  Options:
+    HideFlags: true
+    Unbreakable: true
+
+magnetite:
+  Id: iron_ore
+  Display: '&7Magnetite'
+  Group: mine
+  Category: MINE
+  Enchantments:
+    DURABILITY: 10
+  Lore:
+    - '&7A common metallic ore with magnetic properties.'
+    - '&eIron-based mineral'
+  Options:
+    HideFlags: true
+    Unbreakable: true
+
+silver:
+  Id: iron_ore
+  Display: '&f&lSilver'
+  Group: mine
+  Category: MINE
+  Enchantments:
+    DURABILITY: 10
+  Lore:
+    - '&7An uncommon precious metal with lustrous white appearance.'
+    - '&eIron-based metal'
+  Options:
+    HideFlags: true
+    Unbreakable: true
+
+osmium:
+  Id: iron_ore
+  Display: '&7&lOsmium'
+  Group: mine
+  Category: MINE
+  Enchantments:
+    DURABILITY: 10
+  Lore:
+    - '&7A rare and dense bluish-white metal, one of the heaviest natural elements.'
+    - '&ePremium iron metal'
+  Options:
+    HideFlags: true
+    Unbreakable: true
+
+azurite:
+  Id: lapis_ore
+  Display: '&9Azurite'
+  Group: mine
+  Category: MINE
+  Enchantments:
+    DURABILITY: 10
+  Lore:
+    - '&7A common deep blue mineral with intense azure color.'
+    - '&eLapis-based mineral'
+  Options:
+    HideFlags: true
+    Unbreakable: true
+
+tanzanite:
+  Id: lapis_ore
+  Display: '&9&lTanzanite'
+  Group: mine
+  Category: MINE
+  Enchantments:
+    DURABILITY: 10
+  Lore:
+    - '&7An uncommon blue-purple gemstone known for its trichroic properties.'
+    - '&eLapis-based gem'
+  Options:
+    HideFlags: true
+    Unbreakable: true
+
+blue_sapphire:
+  Id: lapis_ore
+  Display: '&1&lBlue Sapphire'
+  Group: mine
+  Category: MINE
+  Enchantments:
+    DURABILITY: 10
+  Lore:
+    - '&7A rare and precious blue gemstone, second only to diamond in hardness.'
+    - '&ePremium lapis gem'
+  Options:
+    HideFlags: true
+    Unbreakable: true
+
+carnelian:
+  Id: redstone_ore
+  Display: '&cCarnelian'
+  Group: mine
+  Category: MINE
+  Enchantments:
+    DURABILITY: 10
+  Lore:
+    - '&7A common reddish-orange mineral with translucent properties.'
+    - '&eRedstone-based mineral'
+  Options:
+    HideFlags: true
+    Unbreakable: true
+
+red_spinel:
+  Id: redstone_ore
+  Display: '&c&lRed Spinel'
+  Group: mine
+  Category: MINE
+  Enchantments:
+    DURABILITY: 10
+  Lore:
+    - '&7An uncommon vibrant red gemstone often mistaken for ruby.'
+    - '&eRedstone-based gem'
+  Options:
+    HideFlags: true
+    Unbreakable: true
+
+pigeon_blood_ruby:
+  Id: redstone_ore
+  Display: '&4&lPigeon Blood Ruby'
+  Group: mine
+  Category: MINE
+  Enchantments:
+    DURABILITY: 10
+  Lore:
+    - '&7A rare and precious deep red gemstone with the coveted "pigeon blood" color.'
+    - '&ePremium redstone gem'
+  Options:
+    HideFlags: true
+    Unbreakable: true
+
+pyrite:
+  Id: gold_ore
+  Display: '&ePyrite'
+  Group: mine
+  Category: MINE
+  Enchantments:
+    DURABILITY: 10
+  Lore:
+    - '&7A common brassy-yellow mineral often called "Fool`s Gold".'
+    - '&eGold-based mineral'
+  Options:
+    HideFlags: true
+    Unbreakable: true
+
+yellow_topaz:
+  Id: gold_ore
+  Display: '&e&lYellow Topaz'
+  Group: mine
+  Category: MINE
+  Enchantments:
+    DURABILITY: 10
+  Lore:
+    - '&7An uncommon golden-yellow gemstone with excellent clarity.'
+    - '&eGold-based gem'
+  Options:
+    HideFlags: true
+    Unbreakable: true
+
+yellow_sapphire:
+  Id: gold_ore
+  Display: '&6&lYellow Sapphire'
+  Group: mine
+  Category: MINE
+  Enchantments:
+    DURABILITY: 10
+  Lore:
+    - '&7A rare and precious golden gemstone, prized for its brilliance and hardness.'
+    - '&ePremium gold gem'
+  Options:
+    HideFlags: true
+    Unbreakable: true
+
+malachite:
+  Id: emerald_ore
+  Display: '&aMalachite'
+  Group: mine
+  Category: MINE
+  Enchantments:
+    DURABILITY: 10
+  Lore:
+    - '&7A common green mineral with distinctive banded patterns.'
+    - '&eEmerald-based mineral'
+  Options:
+    HideFlags: true
+    Unbreakable: true
+
+peridot:
+  Id: emerald_ore
+  Display: '&a&lPeridot'
+  Group: mine
+  Category: MINE
+  Enchantments:
+    DURABILITY: 10
+  Lore:
+    - '&7An uncommon olive-green gemstone formed in volcanic environments.'
+    - '&eEmerald-based gem'
+  Options:
+    HideFlags: true
+    Unbreakable: true
+
+tropiche_emerald:
+  Id: emerald_ore
+  Display: '&2&lTropiche Emerald'
+  Group: mine
+  Category: MINE
+  Enchantments:
+    DURABILITY: 10
+  Lore:
+    - '&7A rare and precious deep green gemstone with exceptional clarity and color.'
+    - '&ePremium emerald'
+  Options:
+    HideFlags: true
+    Unbreakable: true
+
+danburite:
+  Id: diamond_ore
+  Display: '&fDanburite'
+  Group: mine
+  Category: MINE
+  Enchantments:
+    DURABILITY: 10
+  Lore:
+    - '&7A common colorless crystal with diamond-like brilliance.'
+    - '&eDiamond-based mineral'
+  Options:
+    HideFlags: true
+    Unbreakable: true
+
+goshenite:
+  Id: diamond_ore
+  Display: '&f&lGoshenite'
+  Group: mine
+  Category: MINE
+  Enchantments:
+    DURABILITY: 10
+  Lore:
+    - '&7An uncommon colorless beryl with exceptional clarity.'
+    - '&eDiamond-based gemstone'
+  Options:
+    HideFlags: true
+    Unbreakable: true
+
+cerussite:
+  Id: diamond_ore
+  Display: '&f&l&nCerussite'
+  Group: mine
+  Category: MINE
+  Enchantments:
+    DURABILITY: 10
+  Lore:
+    - '&7A rare and precious crystal with the highest refractive index.'
+    - '&eSupreme diamond gemstone'
+  Options:
+    HideFlags: true
+    Unbreakable: true
+
 # Przedmioty z kategorii LOWISKO (Łowisko)
 alga_I:
   Id: horn_coral
@@ -990,6 +1285,19 @@ andermant:
     DURABILITY: 10
   Lore:
     - '§o&7Premium currency'
+  Options:
+    HideFlags: true
+    Unbreakable: true
+
+crystal:
+  Id: brick
+  Display: '&d&lCrystal'
+  Group: Currency
+  Category: CURRENCY
+  Enchantments:
+    DURABILITY: 10
+  Lore:
+    - '§o&7Mine currency'
   Options:
     HideFlags: true
     Unbreakable: true
