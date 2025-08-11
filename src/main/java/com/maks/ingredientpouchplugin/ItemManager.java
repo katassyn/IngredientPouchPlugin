@@ -105,6 +105,77 @@ public class ItemManager {
         addItem("leaf_II", Material.KELP, "&5[ II ] Leaf", "KOPALNIA", "&7&oBasic crafting material");
         addItem("leaf_III", Material.KELP, "&6[ III ] Leaf", "KOPALNIA", "&7&oBasic crafting material");
 
+        // Items from category MINE
+        addItem("hematite", Material.COAL_ORE, "&8Hematite", "MINE",
+                "&7A common black ore with metallic luster and reddish streaks.",
+                "&eCoal-based mineral");
+        addItem("black_spinel", Material.COAL_ORE, "&8Black Spinel", "MINE",
+                "&7An uncommon black crystal with exceptional hardness and luster.",
+                "&eCoal-based gemstone");
+        addItem("black_diamond", Material.COAL_ORE, "&8&lBlack Diamond", "MINE",
+                "&7A rare and precious black diamond formed under extreme pressure.",
+                "&eHighest quality coal gem");
+
+        addItem("magnetite", Material.IRON_ORE, "&7Magnetite", "MINE",
+                "&7A common metallic ore with magnetic properties.",
+                "&eIron-based mineral");
+        addItem("silver", Material.IRON_ORE, "&f&lSilver", "MINE",
+                "&7An uncommon precious metal with lustrous white appearance.",
+                "&eIron-based metal");
+        addItem("osmium", Material.IRON_ORE, "&7&lOsmium", "MINE",
+                "&7A rare and dense bluish-white metal, one of the heaviest natural elements.",
+                "&ePremium iron metal");
+
+        addItem("azurite", Material.LAPIS_ORE, "&9Azurite", "MINE",
+                "&7A common deep blue mineral with intense azure color.",
+                "&eLapis-based mineral");
+        addItem("tanzanite", Material.LAPIS_ORE, "&9&lTanzanite", "MINE",
+                "&7An uncommon blue-purple gemstone known for its trichroic properties.",
+                "&eLapis-based gem");
+        addItem("blue_sapphire", Material.LAPIS_ORE, "&1&lBlue Sapphire", "MINE",
+                "&7A rare and precious blue gemstone, second only to diamond in hardness.",
+                "&ePremium lapis gem");
+
+        addItem("carnelian", Material.REDSTONE_ORE, "&cCarnelian", "MINE",
+                "&7A common reddish-orange mineral with translucent properties.",
+                "&eRedstone-based mineral");
+        addItem("red_spinel", Material.REDSTONE_ORE, "&c&lRed Spinel", "MINE",
+                "&7An uncommon vibrant red gemstone often mistaken for ruby.",
+                "&eRedstone-based gem");
+        addItem("pigeon_blood_ruby", Material.REDSTONE_ORE, "&4&lPigeon Blood Ruby", "MINE",
+                "&7A rare and precious deep red gemstone with the coveted \"pigeon blood\" color.",
+                "&ePremium redstone gem");
+
+        addItem("pyrite", Material.GOLD_ORE, "&ePyrite", "MINE",
+                "&7A common brassy-yellow mineral often called \"Fool`s Gold\".",
+                "&eGold-based mineral");
+        addItem("yellow_topaz", Material.GOLD_ORE, "&e&lYellow Topaz", "MINE",
+                "&7An uncommon golden-yellow gemstone with excellent clarity.",
+                "&eGold-based gem");
+        addItem("yellow_sapphire", Material.GOLD_ORE, "&6&lYellow Sapphire", "MINE",
+                "&7A rare and precious golden gemstone, prized for its brilliance and hardness.",
+                "&ePremium gold gem");
+
+        addItem("malachite", Material.EMERALD_ORE, "&aMalachite", "MINE",
+                "&7A common green mineral with distinctive banded patterns.",
+                "&eEmerald-based mineral");
+        addItem("peridot", Material.EMERALD_ORE, "&a&lPeridot", "MINE",
+                "&7An uncommon olive-green gemstone formed in volcanic environments.",
+                "&eEmerald-based gem");
+        addItem("tropiche_emerald", Material.EMERALD_ORE, "&2&lTropiche Emerald", "MINE",
+                "&7A rare and precious deep green gemstone with exceptional clarity and color.",
+                "&ePremium emerald");
+
+        addItem("danburite", Material.DIAMOND_ORE, "&fDanburite", "MINE",
+                "&7A common colorless crystal with diamond-like brilliance.",
+                "&eDiamond-based mineral");
+        addItem("goshenite", Material.DIAMOND_ORE, "&f&lGoshenite", "MINE",
+                "&7An uncommon colorless beryl with exceptional clarity.",
+                "&eDiamond-based gemstone");
+        addItem("cerussite", Material.DIAMOND_ORE, "&f&l&nCerussite", "MINE",
+                "&7A rare and precious crystal with the highest refractive index.",
+                "&eSupreme diamond gemstone");
+
         // Przedmioty z kategorii LOWISKO (Łowisko)
         addItem("alga_I", Material.HORN_CORAL, "&9[ I ] Algal", "LOWISKO", "&7&oBasic crafting material");
         addItem("alga_II", Material.HORN_CORAL, "&5[ II ] Algal", "LOWISKO", "&7&oBasic crafting material");
@@ -126,22 +197,24 @@ public class ItemManager {
         addItem("jewel_dust", Material.INK_SAC, "§9Jewel Dust", "CURRENCY", "&7&oUsed to upgrade jewels");
         addItem("shiny_dust", Material.GLOW_INK_SAC, "§5Shiny Dust", "CURRENCY", "&7&oUsed to upgrade gems");
         addItem("rune_dust", Material.CLAY_BALL, "§cRune Dust", "CURRENCY", "&7&oUsed to upgrade runes");
+        addItem("crystal", Material.BRICK, "&d&lCrystal", "CURRENCY", "&7&oMine currency");
 
         plugin.getLogger().info("Loaded " + items.size() + " items.");
     }
 
 
-    private void addItem(String itemId, Material material, String displayName, @NotNull String category, String loreText) {
+    private void addItem(String itemId, Material material, String displayName, @NotNull String category, String... loreText) {
         ItemStack item = new ItemStack(material);
         ItemMeta meta = item.getItemMeta();
 
         // Translate color codes in the display name
         meta.setDisplayName(ChatColor.translateAlternateColorCodes('&', displayName));
 
-        // Apply loreText directly, translating color codes
+        // Apply lore, translating color codes for each line
         List<String> lore = new ArrayList<>();
-        String formattedLore = ChatColor.translateAlternateColorCodes('&', loreText);
-        lore.add(formattedLore);
+        for (String line : loreText) {
+            lore.add(ChatColor.translateAlternateColorCodes('&', line));
+        }
         meta.setLore(lore);
 
         // Set any additional item meta properties here
