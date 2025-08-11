@@ -32,7 +32,7 @@ public class PouchGUI {
     }
 
     private void groupItemsByCategory() {
-        final int debuggingFlag = 1; // Set to 0 when everything is working properly
+        final int debuggingFlag = 0; // Set to 0 when everything is working properly
 
         Map<String, List<String>> categoryItems = new LinkedHashMap<>();
 

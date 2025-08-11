@@ -11,7 +11,7 @@ import org.bukkit.inventory.ItemStack;
  */
 public class PouchAPIImpl implements PouchAPI {
     private final IngredientPouchPlugin plugin;
-    private final int debuggingFlag = 1; // Set to 0 when everything is working properly
+    private final int debuggingFlag = 0; // Set to 0 when everything is working properly
 
     public PouchAPIImpl(IngredientPouchPlugin plugin) {
         this.plugin = plugin;

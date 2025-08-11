@@ -19,6 +19,7 @@ public class IngredientPouchPlugin extends JavaPlugin {
     private Map<UUID, PouchGUI> pouchGuis;
     private PouchListener pouchListener;
     private ChatListener chatListener;
+    private NotificationManager notificationManager; // New field
     private PouchAPI api; // New API field
 
     public IngredientPouchPlugin() {
@@ -30,12 +31,17 @@ public class IngredientPouchPlugin extends JavaPlugin {
         this.databaseManager.init();
         this.itemManager = new ItemManager(this);
         this.pouchGuis = new HashMap();
-        this.getCommand("ingredient_pouch").setExecutor(new IngredientPouchCommand(this));
         this.pouchListener = new PouchListener(this);
         this.chatListener = new ChatListener(this);
+        this.notificationManager = new NotificationManager(this); // Initialize notification manager
 
-        // Register the ItemPickupListener
+        // Register commands
+        this.getCommand("ingredient_pouch").setExecutor(new IngredientPouchCommand(this));
+        this.getCommand("drop").setExecutor(new DropNotificationCommand(this));
+
+        // Register listeners
         new ItemPickupListener(this);
+        new PlayerConnectionListener(this);
 
         // Initialize the API
         this.api = new PouchAPIImpl(this);
@@ -65,6 +71,10 @@ public class IngredientPouchPlugin extends JavaPlugin {
 
     public ChatListener getChatListener() {
         return this.chatListener;
+    }
+    
+    public NotificationManager getNotificationManager() {
+        return this.notificationManager;
     }
 
     /**

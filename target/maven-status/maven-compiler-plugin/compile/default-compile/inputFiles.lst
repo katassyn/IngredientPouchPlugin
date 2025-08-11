@@ -2,12 +2,16 @@ C:\Users\mastu\IdeaProjects\IngredientPouchPlugin\src\main\java\com\maks\mycraft
 C:\Users\mastu\IdeaProjects\IngredientPouchPlugin\src\main\java\com\maks\ingredientpouchplugin\api\PouchAPIImpl.java
 C:\Users\mastu\IdeaProjects\IngredientPouchPlugin\src\main\java\com\maks\ingredientpouchplugin\ChatListener.java
 C:\Users\mastu\IdeaProjects\IngredientPouchPlugin\src\main\java\com\maks\mycraftingplugin2\integration\PouchIntegrationHelper.java
+C:\Users\mastu\IdeaProjects\IngredientPouchPlugin\src\main\java\com\maks\ingredientpouchplugin\NotificationManager.java
+C:\Users\mastu\IdeaProjects\IngredientPouchPlugin\src\main\java\com\maks\ingredientpouchplugin\NotificationMode.java
 C:\Users\mastu\IdeaProjects\IngredientPouchPlugin\src\main\java\com\maks\mycraftingplugin2\TestPouchCommand.java
 C:\Users\mastu\IdeaProjects\IngredientPouchPlugin\src\main\java\com\maks\ingredientpouchplugin\DatabaseManager.java
 C:\Users\mastu\IdeaProjects\IngredientPouchPlugin\src\main\java\com\maks\ingredientpouchplugin\PouchListener.java
+C:\Users\mastu\IdeaProjects\IngredientPouchPlugin\src\main\java\com\maks\ingredientpouchplugin\PlayerConnectionListener.java
 C:\Users\mastu\IdeaProjects\IngredientPouchPlugin\src\main\java\com\maks\ingredientpouchplugin\ItemManager.java
 C:\Users\mastu\IdeaProjects\IngredientPouchPlugin\src\main\java\com\maks\ingredientpouchplugin\IngredientPouchCommand.java
 C:\Users\mastu\IdeaProjects\IngredientPouchPlugin\src\main\java\com\maks\ingredientpouchplugin\IngredientPouchPlugin.java
 C:\Users\mastu\IdeaProjects\IngredientPouchPlugin\src\main\java\com\maks\ingredientpouchplugin\ItemPickupListener.java
+C:\Users\mastu\IdeaProjects\IngredientPouchPlugin\src\main\java\com\maks\ingredientpouchplugin\DropNotificationCommand.java
 C:\Users\mastu\IdeaProjects\IngredientPouchPlugin\src\main\java\com\maks\ingredientpouchplugin\api\PouchAPI.java
 C:\Users\mastu\IdeaProjects\IngredientPouchPlugin\src\main\java\com\maks\ingredientpouchplugin\PouchGUI.java

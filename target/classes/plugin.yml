@@ -7,3 +7,11 @@ commands:
     description: Opens your ingredient pouch.
     usage: /ingredient_pouch
     aliases: [ipouch]
+  drop:
+    description: Manage drop notifications for items added to pouch
+    usage: |
+      /drop show all - Show notifications for all items
+      /drop show best - Show only rare/legendary items
+      /drop show off - Disable all notifications
+      /drop status - Check current notification mode
+    aliases: [drops, dropnotify]

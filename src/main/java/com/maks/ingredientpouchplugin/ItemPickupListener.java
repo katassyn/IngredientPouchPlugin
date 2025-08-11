@@ -68,14 +68,37 @@ public class ItemPickupListener implements Listener {
     }
 
     private void sendNotificationIfNeeded(Player player, ItemStack item, String itemId, int amount) {
+        // Get player's notification mode
+        NotificationMode mode = plugin.getNotificationManager().getNotificationMode(player);
+        
+        // If notifications are off, don't send anything
+        if (mode == NotificationMode.OFF) {
+            return;
+        }
+        
         ItemMeta meta = item.getItemMeta();
-        if (meta != null && meta.hasLore()) {
+        if (meta == null) {
+            return;
+        }
+        
+        // If mode is ALL, always send notification
+        if (mode == NotificationMode.ALL) {
+            player.sendMessage(ChatColor.GREEN + "Added to pouch: " + 
+                meta.getDisplayName() + ChatColor.GREEN + " x" + amount);
+            return;
+        }
+        
+        // If mode is BEST, only send for specific items
+        if (mode == NotificationMode.BEST && meta.hasLore()) {
             List<String> lore = meta.getLore();
             for (String line : lore) {
-                String strippedLine = ChatColor.stripColor(line);
-                if (strippedLine.contains("Crafting and Quest resource") || 
-                    strippedLine.contains("Legendary crafting material") || 
-                    strippedLine.contains("Unique currency")) {
+                String strippedLine = ChatColor.stripColor(line).toLowerCase();
+                if (strippedLine.contains("crafting and quest resource") || 
+                    strippedLine.contains("legendary crafting material") || 
+                    strippedLine.contains("unique currency") ||
+                    strippedLine.contains("currency") ||
+                    strippedLine.contains("unlock") ||
+                    strippedLine.contains("upgrade")) {
 
                     // Send notification
                     player.sendMessage(ChatColor.GREEN + "Added to pouch: " + 

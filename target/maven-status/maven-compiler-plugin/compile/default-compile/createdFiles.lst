@@ -1,7 +1,12 @@
+com\maks\ingredientpouchplugin\DropNotificationCommand.class
 com\maks\ingredientpouchplugin\IngredientPouchPlugin.class
 com\maks\ingredientpouchplugin\ChatListener.class
+com\maks\ingredientpouchplugin\NotificationMode.class
 com\maks\ingredientpouchplugin\api\PouchAPIImpl.class
+com\maks\ingredientpouchplugin\ItemPickupListener.class
 com\maks\ingredientpouchplugin\IngredientPouchCommand.class
+com\maks\ingredientpouchplugin\NotificationManager.class
+com\maks\ingredientpouchplugin\PlayerConnectionListener.class
 com\maks\ingredientpouchplugin\PouchGUI.class
 com\maks\mycraftingplugin2\integration\PouchIntegrationHelper.class
 com\maks\mycraftingplugin2\TestPouchCommand.class
