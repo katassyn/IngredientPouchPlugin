@@ -87,7 +87,30 @@ public class PouchItemMappings {
         itemMappings.put("[ I ] Leaf", "leaf_I");
         itemMappings.put("[ II ] Leaf", "leaf_II");
         itemMappings.put("[ III ] Leaf", "leaf_III");
-        
+
+        // MINE category items
+        itemMappings.put("Hematite", "hematite");
+        itemMappings.put("Black Spinel", "black_spinel");
+        itemMappings.put("Black Diamond", "black_diamond");
+        itemMappings.put("Magnetite", "magnetite");
+        itemMappings.put("Silver", "silver");
+        itemMappings.put("Osmium", "osmium");
+        itemMappings.put("Azurite", "azurite");
+        itemMappings.put("Tanzanite", "tanzanite");
+        itemMappings.put("Blue Sapphire", "blue_sapphire");
+        itemMappings.put("Carnelian", "carnelian");
+        itemMappings.put("Red Spinel", "red_spinel");
+        itemMappings.put("Pigeon Blood Ruby", "pigeon_blood_ruby");
+        itemMappings.put("Pyrite", "pyrite");
+        itemMappings.put("Yellow Topaz", "yellow_topaz");
+        itemMappings.put("Yellow Sapphire", "yellow_sapphire");
+        itemMappings.put("Malachite", "malachite");
+        itemMappings.put("Peridot", "peridot");
+        itemMappings.put("Tropiche Emerald", "tropiche_emerald");
+        itemMappings.put("Danburite", "danburite");
+        itemMappings.put("Goshenite", "goshenite");
+        itemMappings.put("Cerussite", "cerussite");
+
         // LOWISKO (fishing) category items
         itemMappings.put("[ I ] Algal", "alga_I");
         itemMappings.put("[ II ] Algal", "alga_II");
