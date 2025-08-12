@@ -349,11 +349,17 @@ public class PouchIntegrationHelper {
      */
     private static boolean isMatchingItem(ItemStack item1, ItemStack item2, String baseItemName) {
         if (item1 == null || item2 == null) return false;
-        if (item1.getType() != item2.getType()) return false;
-        
+
         String name1 = getBaseItemName(item1);
         String name2 = baseItemName != null ? baseItemName : getBaseItemName(item2);
-        
+
+        // For items in the MINE category, match solely by display name
+        if (PouchItemMappings.isMineCategoryItem(name1) || PouchItemMappings.isMineCategoryItem(name2)) {
+            return name1.equals(name2);
+        }
+
+        if (item1.getType() != item2.getType()) return false;
+
         return name1.equals(name2);
     }
     

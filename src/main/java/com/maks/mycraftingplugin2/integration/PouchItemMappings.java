@@ -2,6 +2,9 @@ package com.maks.mycraftingplugin2.integration;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.HashSet;
+import java.util.Arrays;
+import java.util.Set;
 
 /**
  * Complete mappings between display names and pouch item IDs
@@ -10,6 +13,29 @@ import java.util.Map;
 public class PouchItemMappings {
     
     private static final Map<String, String> itemMappings = new HashMap<>();
+    private static final Set<String> mineItems = new HashSet<>(Arrays.asList(
+        "Hematite",
+        "Black Spinel",
+        "Black Diamond",
+        "Magnetite",
+        "Silver",
+        "Osmium",
+        "Azurite",
+        "Tanzanite",
+        "Blue Sapphire",
+        "Carnelian",
+        "Red Spinel",
+        "Pigeon Blood Ruby",
+        "Pyrite",
+        "Yellow Topaz",
+        "Yellow Sapphire",
+        "Malachite",
+        "Peridot",
+        "Tropiche Emerald",
+        "Danburite",
+        "Goshenite",
+        "Cerussite"
+    ));
     
     static {
         initializeMappings();
@@ -156,7 +182,11 @@ public class PouchItemMappings {
         
         return null;
     }
-    
+
+    public static boolean isMineCategoryItem(String displayName) {
+        return mineItems.contains(displayName);
+    }
+
     /**
      * Add custom mapping
      */
