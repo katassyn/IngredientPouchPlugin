@@ -47,9 +47,9 @@ public class PouchGUI {
 
         int pageIndex = 1;
 
-        // Define specific category order: 1-CURRENCY, 2-EXPO, 3-MONSTER_FRAGMENTS, 4-Q, 5-KOPALNIA, 6-LOWISKO
+        // Define specific category order: 1-CURRENCY, 2-EXPO, 3-MONSTER_FRAGMENTS, 4-Q, 5-KOPALNIA, 6-MINE, 7-FARMING, 8-LOWISKO
         List<String> orderedCategories = new ArrayList<>();
-        String[] categoryOrder = {"CURRENCY", "EXPO", "MONSTER_FRAGMENTS", "Q", "KOPALNIA", "MINE", "LOWISKO"};
+        String[] categoryOrder = {"CURRENCY", "EXPO", "MONSTER_FRAGMENTS", "Q", "KOPALNIA", "MINE", "FARMING", "LOWISKO"};
 
         // Add categories in specified order
         for (String category : categoryOrder) {
