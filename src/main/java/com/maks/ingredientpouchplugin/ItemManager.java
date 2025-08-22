@@ -213,6 +213,53 @@ public class ItemManager {
         addItem("farmer_ancient_grain_II", Material.HAY_BLOCK, "&5[ II ] Ancient Grain Sheaf", "FARMING", "&c&oLegendary crafting material");
         addItem("farmer_ancient_grain_III", Material.HAY_BLOCK, "&6[ III ] Ancient Grain Sheaf", "FARMING", "&c&oLegendary crafting material");
 
+        // Items from category BEES
+        addItem("honey_quality_basic", Material.HONEY_BOTTLE, "&9[ I ] Honey Bottle", "BEES",
+                "&7&oApplies a new &fQuality&7 to an item.",
+                "&7&oRoll range: &f-10% &7to &f+10%.",
+                "&7&oBasic crafting material");
+        addItem("honey_quality_rare", Material.HONEY_BOTTLE, "&5[ II ] Honey Bottle", "BEES",
+                "&7&oApplies a new &fQuality&7 to an item.",
+                "&7&oRoll range: &f0% &7to &f+20%.",
+                "&a&oRare crafting material");
+        addItem("honey_quality_legendary", Material.HONEY_BOTTLE, "&6[ III ] Honey Bottle", "BEES",
+                "&7&oApplies a new &fQuality&7 to an item.",
+                "&7&oRoll range: &f+10% &7to &f+30%.",
+                "&c&oLegendary crafting material");
+
+        addItem("queen_bee_I", Material.BREAD, "&9[ I ] Queen Bee", "BEES",
+                "&7&oHive multiplier: &f1.0x",
+                "&7&oRarer honey chance: &a+5%");
+        addItem("queen_bee_II", Material.BREAD, "&5[ II ] Queen Bee", "BEES",
+                "&7&oHive multiplier: &f1.2x",
+                "&7&oRarer honey chance: &a+10%");
+        addItem("queen_bee_III", Material.BREAD, "&6[ III ] Queen Bee", "BEES",
+                "&7&oHive multiplier: &f1.5x",
+                "&7&oRarer honey chance: &a+15%");
+
+        addItem("worker_bee_I", Material.BREAD, "&9[ I ] Worker Bee", "BEES",
+                "&7&oBase honey production: &f0.50");
+        addItem("worker_bee_II", Material.BREAD, "&5[ II ] Worker Bee", "BEES",
+                "&7&oBase honey production: &f0.75");
+        addItem("worker_bee_III", Material.BREAD, "&6[ III ] Worker Bee", "BEES",
+                "&7&oBase honey production: &f1.00");
+
+        addItem("drone_bee_I", Material.BREAD, "&9[ I ] Drone Bee", "BEES",
+                "&7&oLarvae production: &f0.50",
+                "&7&oReduces base honey production: &f-1.00");
+        addItem("drone_bee_II", Material.BREAD, "&5[ II ] Drone Bee", "BEES",
+                "&7&oLarvae production: &f0.75",
+                "&7&oReduces base honey production: &f-0.75");
+        addItem("drone_bee_III", Material.BREAD, "&6[ III ] Drone Bee", "BEES",
+                "&7&oLarvae production: &f1.00",
+                "&7&oReduces base honey production: &f-0.50");
+
+        addItem("larva_I", Material.COOKIE, "&9[ I ] Bee Larva", "BEES",
+                "&7&oCan transform into any type of bee.");
+        addItem("larva_II", Material.COOKIE, "&5[ II ] Bee Larva", "BEES",
+                "&7&oCan transform into any type of bee.");
+        addItem("larva_III", Material.COOKIE, "&6[ III ] Bee Larva", "BEES",
+                "&7&oCan transform into any type of bee.");
         // Przedmioty z kategorii LOWISKO (Łowisko)
         addItem("alga_I", Material.HORN_CORAL, "&9[ I ] Algal", "LOWISKO", "&7&oBasic crafting material");
         addItem("alga_II", Material.HORN_CORAL, "&5[ II ] Algal", "LOWISKO", "&7&oBasic crafting material");
