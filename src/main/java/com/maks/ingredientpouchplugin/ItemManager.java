@@ -260,7 +260,6 @@ public class ItemManager {
                 "&7&oCan transform into any type of bee.");
         addItem("larva_III", Material.COOKIE, "&6[ III ] Bee Larva", "BEES",
                 "&7&oCan transform into any type of bee.");
-
         // Przedmioty z kategorii LOWISKO (Łowisko)
         addItem("alga_I", Material.HORN_CORAL, "&9[ I ] Algal", "LOWISKO", "&7&oBasic crafting material");
         addItem("alga_II", Material.HORN_CORAL, "&5[ II ] Algal", "LOWISKO", "&7&oBasic crafting material");

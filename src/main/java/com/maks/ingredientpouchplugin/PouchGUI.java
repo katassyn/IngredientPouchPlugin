@@ -51,6 +51,7 @@ public class PouchGUI {
         List<String> orderedCategories = new ArrayList<>();
         String[] categoryOrder = {"CURRENCY", "EXPO", "MONSTER_FRAGMENTS", "Q", "KOPALNIA", "MINE", "FARMING", "BEES", "LOWISKO"};
 
+
         // Add categories in specified order
         for (String category : categoryOrder) {
             if (categoryItems.containsKey(category)) {

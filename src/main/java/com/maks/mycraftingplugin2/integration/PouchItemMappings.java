@@ -182,7 +182,6 @@ public class PouchItemMappings {
         itemMappings.put("[ I ] Bee Larva", "larva_I");
         itemMappings.put("[ II ] Bee Larva", "larva_II");
         itemMappings.put("[ III ] Bee Larva", "larva_III");
-
         // LOWISKO (fishing) category items
         itemMappings.put("[ I ] Algal", "alga_I");
         itemMappings.put("[ II ] Algal", "alga_II");
