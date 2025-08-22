@@ -137,6 +137,52 @@ public class PouchItemMappings {
         itemMappings.put("Goshenite", "goshenite");
         itemMappings.put("Cerussite", "cerussite");
 
+        // FARMING category items
+        itemMappings.put("[ I ] Plant Fiber", "farmer_plant_fiber_I");
+        itemMappings.put("[ II ] Plant Fiber", "farmer_plant_fiber_II");
+        itemMappings.put("[ III ] Plant Fiber", "farmer_plant_fiber_III");
+        itemMappings.put("[ I ] Seed Pouch", "farmer_seed_pouch_I");
+        itemMappings.put("[ II ] Seed Pouch", "farmer_seed_pouch_II");
+        itemMappings.put("[ III ] Seed Pouch", "farmer_seed_pouch_III");
+        itemMappings.put("[ I ] Compost Dust", "farmer_compost_dust_I");
+        itemMappings.put("[ II ] Compost Dust", "farmer_compost_dust_II");
+        itemMappings.put("[ III ] Compost Dust", "farmer_compost_dust_III");
+        itemMappings.put("[ I ] Herbal Extract", "farmer_herb_extract_I");
+        itemMappings.put("[ II ] Herbal Extract", "farmer_herb_extract_II");
+        itemMappings.put("[ III ] Herbal Extract", "farmer_herb_extract_III");
+        itemMappings.put("[ I ] Mushroom Spores", "farmer_mushroom_spores_I");
+        itemMappings.put("[ II ] Mushroom Spores", "farmer_mushroom_spores_II");
+        itemMappings.put("[ III ] Mushroom Spores", "farmer_mushroom_spores_III");
+        itemMappings.put("[ I ] Beeswax Chunk", "farmer_beeswax_chunk_I");
+        itemMappings.put("[ II ] Beeswax Chunk", "farmer_beeswax_chunk_II");
+        itemMappings.put("[ III ] Beeswax Chunk", "farmer_beeswax_chunk_III");
+        itemMappings.put("[ I ] Druidic Essence", "farmer_druidic_essence_I");
+        itemMappings.put("[ II ] Druidic Essence", "farmer_druidic_essence_II");
+        itemMappings.put("[ III ] Druidic Essence", "farmer_druidic_essence_III");
+        itemMappings.put("[ I ] Golden Truffle", "farmer_golden_truffle_I");
+        itemMappings.put("[ II ] Golden Truffle", "farmer_golden_truffle_II");
+        itemMappings.put("[ III ] Golden Truffle", "farmer_golden_truffle_III");
+        itemMappings.put("[ I ] Ancient Grain Sheaf", "farmer_ancient_grain_I");
+        itemMappings.put("[ II ] Ancient Grain Sheaf", "farmer_ancient_grain_II");
+        itemMappings.put("[ III ] Ancient Grain Sheaf", "farmer_ancient_grain_III");
+
+        // BEES category items
+        itemMappings.put("[ I ] Honey Bottle", "honey_quality_basic");
+        itemMappings.put("[ II ] Honey Bottle", "honey_quality_rare");
+        itemMappings.put("[ III ] Honey Bottle", "honey_quality_legendary");
+        itemMappings.put("[ I ] Queen Bee", "queen_bee_I");
+        itemMappings.put("[ II ] Queen Bee", "queen_bee_II");
+        itemMappings.put("[ III ] Queen Bee", "queen_bee_III");
+        itemMappings.put("[ I ] Worker Bee", "worker_bee_I");
+        itemMappings.put("[ II ] Worker Bee", "worker_bee_II");
+        itemMappings.put("[ III ] Worker Bee", "worker_bee_III");
+        itemMappings.put("[ I ] Drone Bee", "drone_bee_I");
+        itemMappings.put("[ II ] Drone Bee", "drone_bee_II");
+        itemMappings.put("[ III ] Drone Bee", "drone_bee_III");
+        itemMappings.put("[ I ] Bee Larva", "larva_I");
+        itemMappings.put("[ II ] Bee Larva", "larva_II");
+        itemMappings.put("[ III ] Bee Larva", "larva_III");
+
         // LOWISKO (fishing) category items
         itemMappings.put("[ I ] Algal", "alga_I");
         itemMappings.put("[ II ] Algal", "alga_II");

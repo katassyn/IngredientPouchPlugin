@@ -176,6 +176,91 @@ public class ItemManager {
                 "&7A rare and precious crystal with the highest refractive index.",
                 "&eSupreme diamond gemstone");
 
+        // Items from category FARMING
+        addItem("farmer_plant_fiber_I", Material.STRING, "&9[ I ] Plant Fiber", "FARMING", "&7&oBasic crafting material");
+        addItem("farmer_plant_fiber_II", Material.STRING, "&5[ II ] Plant Fiber", "FARMING", "&7&oBasic crafting material");
+        addItem("farmer_plant_fiber_III", Material.STRING, "&6[ III ] Plant Fiber", "FARMING", "&7&oBasic crafting material");
+
+        addItem("farmer_seed_pouch_I", Material.WHEAT_SEEDS, "&9[ I ] Seed Pouch", "FARMING", "&7&oBasic crafting material");
+        addItem("farmer_seed_pouch_II", Material.WHEAT_SEEDS, "&5[ II ] Seed Pouch", "FARMING", "&7&oBasic crafting material");
+        addItem("farmer_seed_pouch_III", Material.WHEAT_SEEDS, "&6[ III ] Seed Pouch", "FARMING", "&7&oBasic crafting material");
+
+        addItem("farmer_compost_dust_I", Material.BONE_MEAL, "&9[ I ] Compost Dust", "FARMING", "&7&oBasic crafting material");
+        addItem("farmer_compost_dust_II", Material.BONE_MEAL, "&5[ II ] Compost Dust", "FARMING", "&7&oBasic crafting material");
+        addItem("farmer_compost_dust_III", Material.BONE_MEAL, "&6[ III ] Compost Dust", "FARMING", "&7&oBasic crafting material");
+
+        addItem("farmer_herb_extract_I", Material.SPIDER_EYE, "&9[ I ] Herbal Extract", "FARMING", "&a&oRare crafting material");
+        addItem("farmer_herb_extract_II", Material.SPIDER_EYE, "&5[ II ] Herbal Extract", "FARMING", "&a&oRare crafting material");
+        addItem("farmer_herb_extract_III", Material.SPIDER_EYE, "&6[ III ] Herbal Extract", "FARMING", "&a&oRare crafting material");
+
+        addItem("farmer_mushroom_spores_I", Material.BROWN_MUSHROOM, "&9[ I ] Mushroom Spores", "FARMING", "&a&oRare crafting material");
+        addItem("farmer_mushroom_spores_II", Material.BROWN_MUSHROOM, "&5[ II ] Mushroom Spores", "FARMING", "&a&oRare crafting material");
+        addItem("farmer_mushroom_spores_III", Material.BROWN_MUSHROOM, "&6[ III ] Mushroom Spores", "FARMING", "&a&oRare crafting material");
+
+        addItem("farmer_beeswax_chunk_I", Material.BOOK, "&9[ I ] Beeswax Chunk", "FARMING", "&a&oRare crafting material");
+        addItem("farmer_beeswax_chunk_II", Material.BOOK, "&5[ II ] Beeswax Chunk", "FARMING", "&a&oRare crafting material");
+        addItem("farmer_beeswax_chunk_III", Material.BOOK, "&6[ III ] Beeswax Chunk", "FARMING", "&a&oRare crafting material");
+
+        addItem("farmer_druidic_essence_I", Material.GLOW_INK_SAC, "&9[ I ] Druidic Essence", "FARMING", "&c&oLegendary crafting material");
+        addItem("farmer_druidic_essence_II", Material.GLOW_INK_SAC, "&5[ II ] Druidic Essence", "FARMING", "&c&oLegendary crafting material");
+        addItem("farmer_druidic_essence_III", Material.GLOW_INK_SAC, "&6[ III ] Druidic Essence", "FARMING", "&c&oLegendary crafting material");
+
+        addItem("farmer_golden_truffle_I", Material.GOLDEN_CARROT, "&9[ I ] Golden Truffle", "FARMING", "&c&oLegendary crafting material");
+        addItem("farmer_golden_truffle_II", Material.GOLDEN_CARROT, "&5[ II ] Golden Truffle", "FARMING", "&c&oLegendary crafting material");
+        addItem("farmer_golden_truffle_III", Material.GOLDEN_CARROT, "&6[ III ] Golden Truffle", "FARMING", "&c&oLegendary crafting material");
+
+        addItem("farmer_ancient_grain_I", Material.HAY_BLOCK, "&9[ I ] Ancient Grain Sheaf", "FARMING", "&c&oLegendary crafting material");
+        addItem("farmer_ancient_grain_II", Material.HAY_BLOCK, "&5[ II ] Ancient Grain Sheaf", "FARMING", "&c&oLegendary crafting material");
+        addItem("farmer_ancient_grain_III", Material.HAY_BLOCK, "&6[ III ] Ancient Grain Sheaf", "FARMING", "&c&oLegendary crafting material");
+
+        // Items from category BEES
+        addItem("honey_quality_basic", Material.HONEY_BOTTLE, "&9[ I ] Honey Bottle", "BEES",
+                "&7&oApplies a new &fQuality&7 to an item.",
+                "&7&oRoll range: &f-10% &7to &f+10%.",
+                "&7&oBasic crafting material");
+        addItem("honey_quality_rare", Material.HONEY_BOTTLE, "&5[ II ] Honey Bottle", "BEES",
+                "&7&oApplies a new &fQuality&7 to an item.",
+                "&7&oRoll range: &f0% &7to &f+20%.",
+                "&a&oRare crafting material");
+        addItem("honey_quality_legendary", Material.HONEY_BOTTLE, "&6[ III ] Honey Bottle", "BEES",
+                "&7&oApplies a new &fQuality&7 to an item.",
+                "&7&oRoll range: &f+10% &7to &f+30%.",
+                "&c&oLegendary crafting material");
+
+        addItem("queen_bee_I", Material.BREAD, "&9[ I ] Queen Bee", "BEES",
+                "&7&oHive multiplier: &f1.0x",
+                "&7&oRarer honey chance: &a+5%");
+        addItem("queen_bee_II", Material.BREAD, "&5[ II ] Queen Bee", "BEES",
+                "&7&oHive multiplier: &f1.2x",
+                "&7&oRarer honey chance: &a+10%");
+        addItem("queen_bee_III", Material.BREAD, "&6[ III ] Queen Bee", "BEES",
+                "&7&oHive multiplier: &f1.5x",
+                "&7&oRarer honey chance: &a+15%");
+
+        addItem("worker_bee_I", Material.BREAD, "&9[ I ] Worker Bee", "BEES",
+                "&7&oBase honey production: &f0.50");
+        addItem("worker_bee_II", Material.BREAD, "&5[ II ] Worker Bee", "BEES",
+                "&7&oBase honey production: &f0.75");
+        addItem("worker_bee_III", Material.BREAD, "&6[ III ] Worker Bee", "BEES",
+                "&7&oBase honey production: &f1.00");
+
+        addItem("drone_bee_I", Material.BREAD, "&9[ I ] Drone Bee", "BEES",
+                "&7&oLarvae production: &f0.50",
+                "&7&oReduces base honey production: &f-1.00");
+        addItem("drone_bee_II", Material.BREAD, "&5[ II ] Drone Bee", "BEES",
+                "&7&oLarvae production: &f0.75",
+                "&7&oReduces base honey production: &f-0.75");
+        addItem("drone_bee_III", Material.BREAD, "&6[ III ] Drone Bee", "BEES",
+                "&7&oLarvae production: &f1.00",
+                "&7&oReduces base honey production: &f-0.50");
+
+        addItem("larva_I", Material.COOKIE, "&9[ I ] Bee Larva", "BEES",
+                "&7&oCan transform into any type of bee.");
+        addItem("larva_II", Material.COOKIE, "&5[ II ] Bee Larva", "BEES",
+                "&7&oCan transform into any type of bee.");
+        addItem("larva_III", Material.COOKIE, "&6[ III ] Bee Larva", "BEES",
+                "&7&oCan transform into any type of bee.");
+
         // Przedmioty z kategorii LOWISKO (Łowisko)
         addItem("alga_I", Material.HORN_CORAL, "&9[ I ] Algal", "LOWISKO", "&7&oBasic crafting material");
         addItem("alga_II", Material.HORN_CORAL, "&5[ II ] Algal", "LOWISKO", "&7&oBasic crafting material");

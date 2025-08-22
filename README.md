@@ -5,7 +5,7 @@ A Minecraft plugin that adds a virtual pouch system for storing crafting ingredi
 ## Features
 
 - **Virtual Storage System**: Store items without taking up physical inventory space
-- **Category Organization**: Items automatically sorted by categories (EXPO, Q, KOPALNIA, LOWISKO, CURRENCY)
+- **Category Organization**: Items automatically sorted by categories (EXPO, MONSTER_FRAGMENTS, Q, KOPALNIA, MINE, FARMING, BEES, LOWISKO, CURRENCY)
 - **Paginated GUI**: Easy-to-navigate interface with previous/next page buttons
 - **Database Integration**: Secure MySQL storage with HikariCP connection pooling
 - **Item Management**: Support for custom items with special properties
