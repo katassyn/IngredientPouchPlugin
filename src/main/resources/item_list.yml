@@ -1861,3 +1861,17 @@ crystal:
   Options:
     HideFlags: true
     Unbreakable: true
+
+pota_biola:
+  Id: bowl
+  Display: '§6Biologist Potion'
+  Group: Currency
+  Category: CURRENCY
+  Enchantments:
+    DURABILITY: 10
+  Lore:
+    - '§o&7Right click to reset Biologist Cooldown'
+  Options:
+    HideFlags: true
+    HideAttributes: true
+    Unbreakable: true

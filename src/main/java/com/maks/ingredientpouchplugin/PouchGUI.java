@@ -69,8 +69,8 @@ public class PouchGUI {
             List<String> items = categoryItems.get(category);
 
             if (debuggingFlag == 1) {
-                this.plugin.getLogger().info("[DEBUG] Processing category: " + category);
-                this.plugin.getLogger().info("[DEBUG] Items before sorting: " + String.join(", ", items));
+                //this.plugin.getLogger().info("[DEBUG] Processing category: " + category);
+                //this.plugin.getLogger().info("[DEBUG] Items before sorting: " + String.join(", ", items));
             }
 
             // Sort items to keep same base items together, then by tier
@@ -80,8 +80,8 @@ public class PouchGUI {
                 String baseId2 = getBaseId(item2);
 
                 if (debuggingFlag == 1) {
-                    this.plugin.getLogger().info("[DEBUG] Comparing: " + item1 + " and " + item2);
-                    this.plugin.getLogger().info("[DEBUG] Base IDs: " + baseId1 + " and " + baseId2);
+                   // this.plugin.getLogger().info("[DEBUG] Comparing: " + item1 + " and " + item2);
+                   // this.plugin.getLogger().info("[DEBUG] Base IDs: " + baseId1 + " and " + baseId2);
                 }
 
                 // First compare by base ID (alphabetically)
@@ -95,14 +95,14 @@ public class PouchGUI {
                 int tier2 = getTierLevel(item2);
 
                 if (debuggingFlag == 1) {
-                    this.plugin.getLogger().info("[DEBUG] Same base ID, tiers: " + tier1 + " and " + tier2);
+                   // this.plugin.getLogger().info("[DEBUG] Same base ID, tiers: " + tier1 + " and " + tier2);
                 }
 
                 return Integer.compare(tier1, tier2);
             });
 
             if (debuggingFlag == 1) {
-                this.plugin.getLogger().info("[DEBUG] Items after sorting: " + String.join(", ", items));
+              //  this.plugin.getLogger().info("[DEBUG] Items after sorting: " + String.join(", ", items));
             }
 
             for (int fromIndex = 0; fromIndex < items.size(); fromIndex += ITEM_SLOTS.length) {
@@ -151,7 +151,7 @@ public class PouchGUI {
                 ItemStack originalItem = this.plugin.getItemManager().getItem(itemId);
 
                 if (originalItem == null) {
-                    this.plugin.getLogger().warning("Item with ID '" + itemId + "' not found in ItemManager.");
+                    //this.plugin.getLogger().warning("Item with ID '" + itemId + "' not found in ItemManager.");
                     continue;
                 }
 
@@ -193,7 +193,7 @@ public class PouchGUI {
         if (slot != null) {
             ItemStack originalItem = this.plugin.getItemManager().getItem(itemId);
             if (originalItem == null) {
-                this.plugin.getLogger().warning("Item with ID '" + itemId + "' not found in ItemManager.");
+               // this.plugin.getLogger().warning("Item with ID '" + itemId + "' not found in ItemManager.");
                 return;
             }
 

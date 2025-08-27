@@ -119,7 +119,7 @@ public class ItemPickupListener implements Listener {
         // Get the original item from the item manager to ensure we're matching correctly
         ItemStack originalItem = plugin.getItemManager().getItem(itemId);
         if (originalItem == null) {
-            plugin.getLogger().warning("Item with ID '" + itemId + "' not found in ItemManager.");
+            //plugin.getLogger().warning("Item with ID '" + itemId + "' not found in ItemManager.");
             return;
         }
 

@@ -201,6 +201,8 @@ public class PouchItemMappings {
         itemMappings.put("Jewel Dust", "jewel_dust");
         itemMappings.put("Shiny Dust", "shiny_dust");
         itemMappings.put("Rune Dust", "rune_dust");
+        itemMappings.put("Crystal", "crystal");
+        itemMappings.put("Biologist Potion", "pota_biola");
     }
     
     /**

@@ -282,8 +282,9 @@ public class ItemManager {
         addItem("shiny_dust", Material.GLOW_INK_SAC, "§5Shiny Dust", "CURRENCY", "&7&oUsed to upgrade gems");
         addItem("rune_dust", Material.CLAY_BALL, "§cRune Dust", "CURRENCY", "&7&oUsed to upgrade runes");
         addItem("crystal", Material.BRICK, "&d&lCrystal", "CURRENCY", "&7&oMine currency");
+        addItem("pota_biola", Material.BOWL, "&6Biologist Potion", "CURRENCY", "&7&oRight click to reset Biologist Cooldown");
 
-        plugin.getLogger().info("Loaded " + items.size() + " items.");
+       // plugin.getLogger().info("Loaded " + items.size() + " items.");
     }
 
 
@@ -316,7 +317,7 @@ public class ItemManager {
         item.setItemMeta(meta);
 
         // Debugging: Print the item's lore to verify formatting
-        plugin.getLogger().info("Item added with lore: " + meta.getLore());
+        //plugin.getLogger().info("Item added with lore: " + meta.getLore());
 
         // Store the item
         items.put(itemId, item);

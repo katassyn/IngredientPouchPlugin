@@ -152,7 +152,7 @@ public class PouchListener implements Listener {
         ItemStack originalItem = this.plugin.getItemManager().getItem(itemId);
         if (originalItem == null) {
             player.sendMessage(ChatColor.RED + "Error: Item not found.");
-            this.plugin.getLogger().warning("Item with ID '" + itemId + "' not found in ItemManager.");
+            //this.plugin.getLogger().warning("Item with ID '" + itemId + "' not found in ItemManager.");
             return;
         }
 
@@ -208,7 +208,7 @@ public class PouchListener implements Listener {
         ItemStack itemToDeposit = this.plugin.getItemManager().getItem(itemId);
         if (itemToDeposit == null) {
             player.sendMessage(ChatColor.RED + "Error: Item not found.");
-            this.plugin.getLogger().warning("Item with ID '" + itemId + "' not found in ItemManager.");
+        //    this.plugin.getLogger().warning("Item with ID '" + itemId + "' not found in ItemManager.");
             return;
         }
         int amountInInventory = this.countItemsInInventory(player, itemToDeposit);
