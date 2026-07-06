@@ -15,3 +15,7 @@ commands:
       /drop show off - Disable all notifications
       /drop status - Check current notification mode
     aliases: [drops, dropnotify]
+  debugpouch:
+    description: Debug command to show all items in your pouch
+    usage: /debugpouch
+    aliases: [dpuch, pouchdebug]

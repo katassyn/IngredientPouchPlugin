@@ -22,7 +22,12 @@ public class PouchGUI {
     private int maxPage;
     private final Map<Integer, List<String>> pages = new HashMap<>();
     private final Map<Integer, String> slotItemMap = new HashMap<>();
+    private final Map<Integer, String> categorySlotMap = new HashMap<>();
+    private final List<String> orderedCategories = new ArrayList<>();
+    private final Map<String, Integer> categoryStartPage = new HashMap<>();
+    private boolean inCategorySelection = false;
     private static final int[] ITEM_SLOTS = new int[]{10, 11, 12, 13, 14, 15, 16, 19, 20, 21, 22, 23, 24, 25, 28, 29, 30, 31, 32, 33, 34, 37, 38, 39, 40, 41, 42, 43};
+    private static final int[] CATEGORY_SLOTS = new int[]{10, 11, 12, 13, 14, 15, 16, 19, 20, 21, 22, 23, 24, 25, 28, 29, 30, 31, 32, 33, 34};
 
     public PouchGUI(IngredientPouchPlugin plugin, Player player) {
         this.plugin = plugin;
@@ -47,59 +52,32 @@ public class PouchGUI {
 
         int pageIndex = 1;
 
-        // Define specific category order: 1-CURRENCY, 2-EXPO, 3-MONSTER_FRAGMENTS, 4-Q, 5-KOPALNIA, 6-MINE, 7-FARMING, 8-BEES, 9-LOWISKO
+        // Define specific category order: 1-CURRENCY, 2-EXPO, 3-MONSTER_FRAGMENTS, 4-Q, 5-KOPALNIA, 6-MINE, 7-FARMING, 8-BEES, 9-LOWISKO, 10-THREAD_WEAVING, 11-SCIENTIST, 12-DEMON_TOWER
         List<String> orderedCategories = new ArrayList<>();
-        String[] categoryOrder = {"CURRENCY", "EXPO", "MONSTER_FRAGMENTS", "Q", "KOPALNIA", "MINE", "FARMING", "BEES", "LOWISKO"};
+        String[] categoryOrder = {"CURRENCY", "EXPO", "MONSTER_FRAGMENTS", "Q", "KOPALNIA", "MINE", "FARMING", "BEES", "LOWISKO", "THREAD_WEAVING", "SCIENTIST", "DEMON_TOWER"};
 
 
         // Add categories in specified order
         for (String category : categoryOrder) {
             if (categoryItems.containsKey(category)) {
-                orderedCategories.add(category);
+                this.orderedCategories.add(category);
             }
         }
 
-        // Add any remaining categories alphabetically
+        // Add any remaining categories in the order they were defined
         List<String> remainingCategories = new ArrayList<>(categoryItems.keySet());
-        remainingCategories.removeAll(orderedCategories);
-        Collections.sort(remainingCategories);
-        orderedCategories.addAll(remainingCategories);
+        remainingCategories.removeAll(this.orderedCategories);
+        this.orderedCategories.addAll(remainingCategories);
 
-        for (String category : orderedCategories) {
+        for (String category : this.orderedCategories) {
+            // Save starting page for each category
+            this.categoryStartPage.put(category, pageIndex);
             List<String> items = categoryItems.get(category);
 
             if (debuggingFlag == 1) {
                 //this.plugin.getLogger().info("[DEBUG] Processing category: " + category);
                 //this.plugin.getLogger().info("[DEBUG] Items before sorting: " + String.join(", ", items));
             }
-
-            // Sort items to keep same base items together, then by tier
-            Collections.sort(items, (item1, item2) -> {
-                // Get base ID by removing tier suffix
-                String baseId1 = getBaseId(item1);
-                String baseId2 = getBaseId(item2);
-
-                if (debuggingFlag == 1) {
-                   // this.plugin.getLogger().info("[DEBUG] Comparing: " + item1 + " and " + item2);
-                   // this.plugin.getLogger().info("[DEBUG] Base IDs: " + baseId1 + " and " + baseId2);
-                }
-
-                // First compare by base ID (alphabetically)
-                int baseComparison = baseId1.compareTo(baseId2);
-                if (baseComparison != 0) {
-                    return baseComparison;
-                }
-
-                // If base IDs are the same, sort by tier level (I < II < III)
-                int tier1 = getTierLevel(item1);
-                int tier2 = getTierLevel(item2);
-
-                if (debuggingFlag == 1) {
-                   // this.plugin.getLogger().info("[DEBUG] Same base ID, tiers: " + tier1 + " and " + tier2);
-                }
-
-                return Integer.compare(tier1, tier2);
-            });
 
             if (debuggingFlag == 1) {
               //  this.plugin.getLogger().info("[DEBUG] Items after sorting: " + String.join(", ", items));
@@ -114,14 +92,152 @@ public class PouchGUI {
     }
 
     public void open() {
-        this.openPage(this.page);
+        this.openCategorySelection();
+    }
+
+    public void openCategorySelection() {
+        this.inCategorySelection = true;
+        this.inventory = Bukkit.createInventory(null, 54, "Ingredient Pouch - Categories");
+        this.loadCategorySelection();
+        this.player.openInventory(this.inventory);
+    }
+
+    private void loadCategorySelection() {
+        // Set background
+        ItemStack filler = new ItemStack(Material.BLACK_STAINED_GLASS_PANE);
+        ItemMeta fillerMeta = filler.getItemMeta();
+        fillerMeta.setDisplayName(" ");
+        filler.setItemMeta(fillerMeta);
+
+        for (int i = 0; i < this.inventory.getSize(); i++) {
+            this.inventory.setItem(i, filler);
+        }
+
+        this.categorySlotMap.clear();
+        int slotIndex = 0;
+
+        for (String category : this.orderedCategories) {
+            if (slotIndex >= CATEGORY_SLOTS.length) {
+                break;
+            }
+
+            int slot = CATEGORY_SLOTS[slotIndex];
+            ItemStack categoryItem = getCategoryIcon(category);
+            this.inventory.setItem(slot, categoryItem);
+            this.categorySlotMap.put(slot, category);
+            slotIndex++;
+        }
+    }
+
+    private ItemStack getCategoryIcon(String category) {
+        Material material;
+        String displayName;
+        String description;
+
+        switch (category) {
+            case "CURRENCY":
+                material = Material.GOLD_INGOT;
+                displayName = "&e&lCurrency";
+                description = "&7Currencies and valuable items";
+                break;
+            case "EXPO":
+                material = Material.DRAGON_HEAD;
+                displayName = "&d&lExperience Areas";
+                description = "&7Mini boss fragments";
+                break;
+            case "MONSTER_FRAGMENTS":
+                material = Material.FLINT;
+                displayName = "&c&lMonster Fragments";
+                description = "&7Soul and heart fragments";
+                break;
+            case "Q":
+                material = Material.NETHERITE_SCRAP;
+                displayName = "&6&lBoss Materials";
+                description = "&7Legendary boss drops";
+                break;
+            case "KOPALNIA":
+                material = Material.COBBLESTONE;
+                displayName = "&8&lMine";
+                description = "&7Mining materials";
+                break;
+            case "MINE":
+                material = Material.DIAMOND_ORE;
+                displayName = "&b&lGems";
+                description = "&7Precious gems and minerals";
+                break;
+            case "FARMING":
+                material = Material.PUMPKIN_SEEDS;
+                displayName = "&a&lFarming";
+                description = "&7Agricultural materials";
+                break;
+            case "BEES":
+                material = Material.HONEYCOMB;
+                displayName = "&6&lBees";
+                description = "&7Honey and bee products";
+                break;
+            case "LOWISKO":
+                material = Material.FISHING_ROD;
+                displayName = "&3&lFishing";
+                description = "&7Fishing materials";
+                break;
+            case "THREAD_WEAVING":
+                material = Material.STRING;
+                displayName = "&5&lThread Weaving";
+                description = "&7Thread essences";
+                break;
+            case "SCIENTIST":
+                material = Material.BREWING_STAND;
+                displayName = "&9&lScientist";
+                description = "&7Research materials";
+                break;
+            case "DEMON_TOWER":
+                material = Material.NETHER_BRICK;
+                displayName = "&c&lDemon Tower";
+                description = "&7Demon Tower drops";
+                break;
+            default:
+                material = Material.CHEST;
+                displayName = "&f&l" + category;
+                description = "&7" + category + " items";
+                break;
+        }
+
+        ItemStack item = new ItemStack(material);
+        ItemMeta meta = item.getItemMeta();
+        meta.setDisplayName(ChatColor.translateAlternateColorCodes('&', displayName));
+        List<String> lore = new ArrayList<>();
+        lore.add(ChatColor.translateAlternateColorCodes('&', description));
+        lore.add("");
+        lore.add(ChatColor.YELLOW + "Click to open category");
+        meta.setLore(lore);
+        item.setItemMeta(meta);
+        return item;
+    }
+
+    public void openCategory(String category) {
+        this.inCategorySelection = false;
+        Integer startPage = this.categoryStartPage.get(category);
+        if (startPage != null) {
+            this.openPage(startPage);
+        } else {
+            this.openPage(1);
+        }
     }
 
     public void openPage(int pageNumber) {
+        this.inCategorySelection = false;
         this.page = pageNumber;
         this.inventory = Bukkit.createInventory(null, 54, "Ingredient Pouch - Page " + this.page);
         this.loadItems();
         this.player.openInventory(this.inventory);
+    }
+
+    public boolean isInCategorySelection() {
+        return this.inCategorySelection;
+    }
+
+    public String getCategoryBySlot(int slot) {
+        return this.categorySlotMap.get(slot);
     }
 
     public void loadItems() {
@@ -249,9 +365,17 @@ public class PouchGUI {
         nextMeta.setDisplayName(ChatColor.GREEN + "Next Page");
         nextPage.setItemMeta(nextMeta);
 
+        ItemStack backToCategories = new ItemStack(Material.BARRIER);
+        ItemMeta backMeta = backToCategories.getItemMeta();
+        backMeta.setDisplayName(ChatColor.RED + "Back to Categories");
+        backToCategories.setItemMeta(backMeta);
+
         if (this.page > 1) {
             this.inventory.setItem(45, previousPage);
         }
+
+        // Back to categories button in the middle
+        this.inventory.setItem(49, backToCategories);
 
         if (this.page < this.maxPage) {
             this.inventory.setItem(53, nextPage);
@@ -299,78 +423,4 @@ public class PouchGUI {
         return 0;
     }
 
-    /**
-     * Extracts the tier information from an item name.
-     * Looks for patterns like [I], [II], [III] in the item name.
-     * 
-     * @param itemName The display name of the item
-     * @return The tier string, or empty string if no tier is found
-     */
-    private String extractTier(String itemName) {
-        // Look for [I], [II], [III] pattern in the name
-        if (itemName == null) {
-            return "";
-        }
-
-        // Use regex to find the tier in square brackets
-        java.util.regex.Pattern pattern = java.util.regex.Pattern.compile("\\[(.*?)\\]");
-        java.util.regex.Matcher matcher = pattern.matcher(itemName);
-
-        if (matcher.find()) {
-            return matcher.group(1).trim();
-        }
-
-        return "";
-    }
-
-    /**
-     * Converts Roman numeral to integer.
-     * Handles I, II, III for tier conversion.
-     * 
-     * @param roman The Roman numeral string
-     * @return The integer value, or 0 if invalid
-     */
-    private int romanToInt(String roman) {
-        if (roman == null || roman.isEmpty()) {
-            return 0;
-        }
-
-        roman = roman.trim();
-
-        // Simple conversion for our limited use case
-        switch (roman) {
-            case "I":
-                return 1;
-            case "II":
-                return 2;
-            case "III":
-                return 3;
-            default:
-                // Try to parse as integer if it's not a Roman numeral
-                try {
-                    return Integer.parseInt(roman);
-                } catch (NumberFormatException e) {
-                    return 0;
-                }
-        }
-    }
-
-    // Helper method to extract the base ID (without tier suffix)
-    private String getBaseId(String itemId) {
-        if (itemId.endsWith("_I") || itemId.endsWith("_II") || itemId.endsWith("_III")) {
-            int lastUnderscoreIndex = itemId.lastIndexOf('_');
-            if (lastUnderscoreIndex != -1) {
-                return itemId.substring(0, lastUnderscoreIndex);
-            }
-        }
-        return itemId;
-    }
-
-    // Helper method to get the tier level (I=1, II=2, III=3)
-    private int getTierLevel(String itemId) {
-        if (itemId.endsWith("_I")) return 1;
-        if (itemId.endsWith("_II")) return 2;
-        if (itemId.endsWith("_III")) return 3;
-        return 0; // No tier or unable to determine
-    }
 }

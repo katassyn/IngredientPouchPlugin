@@ -1,119 +1,68 @@
-# IngredientPouchPlugin
+# StoragePlugin
 
-A Minecraft plugin that adds a virtual pouch system for storing crafting ingredients and items. Designed for RPG servers, it provides an efficient way to manage large quantities of crafting materials and special items.
+A Minecraft plugin that adds a customizable storage system with a /storage command. Players can access their storage, which supports multiple pages, each with a configurable price. All items are securely stored in a specified database, and the plugin's behavior can be fully customized via the config.yml file.
 
 ## Features
-
-- **Virtual Storage System**: Store items without taking up physical inventory space
-- **Category Organization**: Items automatically sorted by categories (EXPO, MONSTER_FRAGMENTS, Q, KOPALNIA, MINE, FARMING, BEES, LOWISKO, CURRENCY)
-- **Paginated GUI**: Easy-to-navigate interface with previous/next page buttons
-- **Database Integration**: Secure MySQL storage with HikariCP connection pooling
-- **Item Management**: Support for custom items with special properties
-- **Efficient Resource Usage**: Optimized for performance with connection pooling
-- **User-Friendly Commands**: Simple command interface for accessing the pouch
-
-## Requirements
-
-- Paper/Spigot 1.20.1+
-- Java 8 or higher
-- MySQL Database
-
-## Installation
-
-1. Download the latest release from the releases page
-2. Place the .jar file in your server's `plugins` folder
-3. Start the server to generate the config file
-4. Edit the configuration in `plugins/IngredientPouchPlugin/config.yml`
-5. Restart the server
+- **Custom Storage Command:** /storage opens the player's storage system.
+- **Configurable Pages:**
+  - Each storage can have multiple pages.
+  - The number of pages and their respective costs can be set in the configuration.
+- **Database Integration:** Items are stored in a specified database for safety and persistence.
+- **Fully Configurable:**
+  - All settings, including prices, database connection, and more, can be adjusted in config.yml.
+- **Custom Currency System:**
+  - Uses configurable in-game items as currency for purchasing storage pages.
+  - Integrates with IngredientPouch to spend the same currency straight from the pouch when available.
 
 ## Configuration
+Edit the config.yml file to set up the plugin:
+- Configure the number of pages and their prices.
+- Set up database connection details (e.g., MySQL).
+- Configure the custom currency item (material type, display name, and optional pouch item id).
+- Adjust other plugin-specific settings.
 
-```yaml
+Example configuration:
+`yaml
+max-pages: 5
+page-costs:
+  2: 10
+  3: 20
+  4: 30
+  5: 40
+
 database:
-  host: localhost
-  port: 3306
-  name: your_database_name
-  user: your_username
-  password: your_password
-```
+  host: "localhost"
+  port: "3307"
+  name: "minecraft_storage"
+  user: "root"
+  password: ""
 
-## Commands
+currency-item:
+  material: "SMALL_AMETHYST_BUD"
+  name: "&5&lAnderium"
+  pouch-id: "andermant"
+`
 
-- `/ingredient_pouch` - Opens the ingredient pouch GUI
-
-## Permissions
-
-- `ingredient_pouch.use` - Allows use of the ingredient pouch command
-- `ingredient_pouch.admin` - Allows use of admin commands (coming soon)
+## Installation
+1. Place the plugin's JAR file into your server's plugins folder.
+2. Start or reload the server.
+3. Edit the config.yml file to suit your needs.
+4. Restart the server to apply the changes.
 
 ## Usage
+- Use /storage to open your personal storage.
+- Unlock additional pages by paying the configured price using the custom currency item.
+- Players need to have the required number of currency items in their inventory or pouch to purchase additional storage pages.
 
-1. Players can access their pouch using `/ingredient_pouch`
-2. Left-click items in inventory to deposit them into the pouch
-3. Right-click items in the pouch to withdraw one at a time
-4. Shift + Right-click to specify a custom amount to withdraw
-5. Navigate through pages using the arrow buttons
+## Requirements
+- A supported database (e.g., MySQL) for item storage.
 
-## Database Structure
-
-The plugin uses a MySQL database with the following table structure:
-
-```sql
-CREATE TABLE player_pouch (
-    player_uuid VARCHAR(36),
-    item_id VARCHAR(255),
-    quantity INT,
-    PRIMARY KEY(player_uuid, item_id)
-);
-```
-
-## Development
-
-### Building from Source
-
-1. Clone the repository:
-```bash
-git clone https://github.com/yourusername/IngredientPouchPlugin.git
-```
-
-2. Build using Maven:
-```bash
-cd IngredientPouchPlugin
-mvn clean package
-```
-
-### Dependencies
-
-- PaperMC API
-- HikariCP
-
-## Contributing
-
-1. Fork the repository
-2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
-
-## API Usage
-
-You can integrate with the plugin using its API:
-
-```java
-IngredientPouchPlugin plugin = (IngredientPouchPlugin) Bukkit.getPluginManager().getPlugin("IngredientPouchPlugin");
-ItemManager itemManager = plugin.getItemManager();
-
-// Get item from pouch
-ItemStack item = itemManager.getItem("item_id");
-
-// Check item category
-String category = itemManager.getItemCategory("item_id");
-```
-
-## License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+## Permissions
+- playerstorage.use - Allows players to use the /storage command
 
 ## Support
+If you encounter any issues or have feature requests, feel free to open an issue in the repository or contact the developer.
 
-For support, please open an issue in the GitHub repository or contact us through [your contact method].
+---
+
+Enjoy managing your storage with **StoragePlugin**!

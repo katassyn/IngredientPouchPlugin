@@ -27,9 +27,9 @@ public class DatabaseManager {
         config.setUsername(user);
         config.setPassword(password);
 
-        // HikariCP specific configuration
-        config.setMaximumPoolSize(10);
-        config.setMinimumIdle(5);
+        // HikariCP specific configuration - Optimized for 30+ players (Medium Priority Plugin)
+        config.setMaximumPoolSize(22);  // Increased from 10 to handle ingredient pouch operations
+        config.setMinimumIdle(10);      // Increased from 5 to maintain ready connections
         config.setIdleTimeout(300000); // 5 minutes
         config.setConnectionTimeout(10000); // 10 seconds
         config.setValidationTimeout(5000); // 5 seconds

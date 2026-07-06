@@ -116,22 +116,28 @@ public class PouchIntegrationHelper {
      * Get amount from player's pouch
      */
     private static int getPouchAmount(Player player, ItemStack requiredItem) {
-        if (!apiAvailable) return 0;
-        
+        if (!apiAvailable) {
+            Bukkit.getLogger().warning("[PouchIntegration] API not available!");
+            return 0;
+        }
+
         String itemId = findPouchItemId(requiredItem);
+        String itemName = getItemName(requiredItem);
+        boolean isJoker = itemName.toLowerCase().contains("joker");
+
         if (itemId == null) {
-            if (debugFlag == 1) {
-                Bukkit.getLogger().info("[PouchIntegration] Could not find pouch item ID for: " + getItemName(requiredItem));
+            if (isJoker || debugFlag == 1) {
+                Bukkit.getLogger().warning("[PouchIntegration] Could not find pouch item ID for: " + itemName);
             }
             return 0;
         }
-        
+
         int quantity = pouchAPI.getItemQuantity(player.getUniqueId().toString(), itemId);
-        
-        if (debugFlag == 1) {
-            Bukkit.getLogger().info("[PouchIntegration] Pouch quantity for " + itemId + ": " + quantity);
+
+        if (isJoker || debugFlag == 1) {
+            Bukkit.getLogger().info("[PouchIntegration] Pouch quantity for " + itemId + " (item: " + itemName + "): " + quantity);
         }
-        
+
         return quantity;
     }
     
@@ -253,21 +259,31 @@ public class PouchIntegrationHelper {
      */
     private static String findPouchItemId(ItemStack item) {
         if (!apiAvailable) return null;
-        
+
         String itemName = getBaseItemName(item);
-        
+        String fullItemName = getItemName(item);
+
+        // Special debug for Joker item
+        boolean isJoker = itemName.toLowerCase().contains("joker") || fullItemName.toLowerCase().contains("joker");
+
+        if (isJoker || debugFlag == 1) {
+            Bukkit.getLogger().info("[PouchIntegration] Finding pouch ID for item:");
+            Bukkit.getLogger().info("  - Full name: " + fullItemName);
+            Bukkit.getLogger().info("  - Base name: " + itemName);
+        }
+
         // Use the centralized mappings
         String pouchId = PouchItemMappings.getPouchItemId(itemName);
-        
+
         if (pouchId != null) {
-            if (debugFlag == 1) {
+            if (isJoker || debugFlag == 1) {
                 Bukkit.getLogger().info("[PouchIntegration] Found mapping: " + itemName + " -> " + pouchId);
             }
             return pouchId;
         }
-        
+
         // Try to auto-generate ID from name if no mapping found
-        if (debugFlag == 1) {
+        if (isJoker || debugFlag == 1) {
             Bukkit.getLogger().info("[PouchIntegration] No mapping found for: " + itemName + ", trying auto-generate");
         }
         return generateItemId(itemName);
@@ -334,15 +350,29 @@ public class PouchIntegrationHelper {
                 try {
                     Integer.parseInt(parts[parts.length - 1].replaceAll("[^0-9]", ""));
                     // It's a number, so remove it
-                    return String.join(" x", Arrays.copyOf(parts, parts.length - 1));
+                    return normalizeDisplayName(String.join(" x", Arrays.copyOf(parts, parts.length - 1)));
                 } catch (NumberFormatException e) {
                     // Not a number, keep full name
                 }
             }
         }
         
-        return name;
+        return normalizeDisplayName(name);
     }
+
+    private static String normalizeDisplayName(String name) {
+        if (name == null) {
+            return "";
+        }
+
+        switch (name.toLowerCase(java.util.Locale.ROOT)) {
+            case "andermant":
+                return "Anderium";
+            default:
+                return name;
+        }
+    }
+
     
     /**
      * Check if two items match (ignoring stack size in name)
@@ -428,3 +458,4 @@ public class PouchIntegrationHelper {
         player.sendMessage("Total: " + getTotalItemAmount(player, item));
     }
 }
+

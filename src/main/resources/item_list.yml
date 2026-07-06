@@ -1838,7 +1838,7 @@ clover:
 
 andermant:
   Id: small_amethyst_bud
-  Display: '§5&lAndermant'
+  Display: '�5&lAnderium'
   Group: Currency
   Category: CURRENCY
   Enchantments:
@@ -1875,3 +1875,299 @@ pota_biola:
     HideFlags: true
     HideAttributes: true
     Unbreakable: true
+
+essence_crystal:
+  Id: quartz
+  Display: '&9Essence Crystal'
+  Group: crafting_dungeon
+  Category: CURRENCY
+  Enchantments:
+    - DURABILITY:10
+  Lore:
+    - '§o&7Basic crafting material'
+  Options:
+    HideFlags: true
+    HideAttributes: true
+    Unbreakable: true
+
+power_crystal:
+  Id: raw_gold
+  Display: '&5Power Crystal'
+  Group: crafting_dungeon
+  Category: CURRENCY
+  Enchantments:
+    - DURABILITY:10
+  Lore:
+    - '§o&aRare crafting material'
+  Options:
+    HideFlags: true
+    HideAttributes: true
+    Unbreakable: true
+
+primordial_soul_crystal:
+  Id: echo_shard
+  Display: '&6Primordial Soul Crystal'
+  Group: crafting_dungeon
+  Category: CURRENCY
+  Enchantments:
+    - DURABILITY:10
+  Lore:
+    - '§o&cLegendary crafting material'
+  Options:
+    HideFlags: true
+    HideAttributes: true
+    Unbreakable: true
+
+new_moon_scrol:
+  Id: potato
+  Display: '&aNew Moon Parchment'
+  Group: Currency
+  Category: CURRENCY
+  Enchantments:
+    - DURABILITY:10
+  Lore:
+    - '&o&7Used to enter the land of New Moon Lords'
+  Options:
+    HideFlags: true
+    HideAttributes: true
+    Unbreakable: true
+
+witch_wood:
+  Id: bamboo
+  Display: '&2Fairy Wood'
+  Group: Currency
+  Category: CURRENCY
+  Enchantments:
+    - DURABILITY:10
+  Lore:
+    - '&o&7Used to inflict damage on New Moon Lords'
+  Options:
+    HideFlags: true
+    HideAttributes: true
+    Unbreakable: true
+
+snow_flakes:
+  Id: snowball
+  Display: '&f&lSnow Flakes'
+  Group: Currency
+  Category: CURRENCY
+  Enchantments:
+    - DURABILITY:10
+  Lore:
+    - '&o&7Winter event currency'
+  Options:
+    HideFlags: true
+    HideAttributes: true
+    Unbreakable: true
+
+honey_bait:
+  Id: honey_bottle
+  Display: '&6Honey Bait'
+  Group: Currency
+  Category: CURRENCY
+  Enchantments:
+    - DURABILITY:10
+  Lore:
+    - '&o&7Used to enter the Gluttonous Bear`s cave'
+  Options:
+    HideFlags: true
+    HideAttributes: true
+    Unbreakable: true
+
+winter_solstice_log:
+  Id: spruce_wood
+  Display: '&8Winter Solstice Log'
+  Group: Currency
+  Category: CURRENCY
+  Enchantments:
+    - DURABILITY:10
+  Lore:
+    - '&o&7Used to enter Krampus`s domain'
+  Options:
+    HideFlags: true
+    HideAttributes: true
+    Unbreakable: true
+
+# Przedmioty z kategorii THREAD_WEAVING
+thread_essence:
+  Id: nether_brick
+  Display: '&7Thread Essence'
+  Group: thread_weaving
+  Category: THREAD_WEAVING
+  Enchantments:
+    - DURABILITY:10
+  Lore:
+    - '§o&7Basic Thread Weaving material'
+  Options:
+    HideFlags: true
+    HideAttributes: true
+    Unbreakable: true
+
+shadow_thread_essence:
+  Id: magma_cream
+  Display: '&5Shadow Thread Essence'
+  Group: thread_weaving
+  Category: THREAD_WEAVING
+  Enchantments:
+    - DURABILITY:10
+  Lore:
+    - '§o&aRare Thread Weaving material'
+  Options:
+    HideFlags: true
+    HideAttributes: true
+    Unbreakable: true
+
+undead_thread_essence:
+  Id: magma_cream
+  Display: '&8Undead Thread Essence'
+  Group: thread_weaving
+  Category: THREAD_WEAVING
+  Enchantments:
+    - DURABILITY:10
+  Lore:
+    - '§o&aRare Thread Weaving material'
+  Options:
+    HideFlags: true
+    HideAttributes: true
+    Unbreakable: true
+
+fire_thread_essence:
+  Id: magma_cream
+  Display: '&cFire Thread Essence'
+  Group: thread_weaving
+  Category: THREAD_WEAVING
+  Enchantments:
+    - DURABILITY:10
+  Lore:
+    - '§o&aRare Thread Weaving material'
+  Options:
+    HideFlags: true
+    HideAttributes: true
+    Unbreakable: true
+
+water_thread_essence:
+  Id: magma_cream
+  Display: '&bWater Thread Essence'
+  Group: thread_weaving
+  Category: THREAD_WEAVING
+  Enchantments:
+    - DURABILITY:10
+  Lore:
+    - '§o&aRare Thread Weaving material'
+  Options:
+    HideFlags: true
+    HideAttributes: true
+    Unbreakable: true
+
+wild_thread_essence:
+  Id: magma_cream
+  Display: '&aWild Thread Essence'
+  Group: thread_weaving
+  Category: THREAD_WEAVING
+  Enchantments:
+    - DURABILITY:10
+  Lore:
+    - '§o&aRare Thread Weaving material'
+  Options:
+    HideFlags: true
+    HideAttributes: true
+    Unbreakable: true
+
+poison_thread_essence:
+  Id: magma_cream
+  Display: '&2Poison Thread Essence'
+  Group: thread_weaving
+  Category: THREAD_WEAVING
+  Enchantments:
+    - DURABILITY:10
+  Lore:
+    - '§o&aRare Thread Weaving material'
+  Options:
+    HideFlags: true
+    HideAttributes: true
+    Unbreakable: true
+
+legendary_shadow_thread_essence:
+  Id: rabbit_foot
+  Display: '&5&lLegendary Shadow Thread Essence'
+  Group: thread_weaving
+  Category: THREAD_WEAVING
+  Enchantments:
+    - DURABILITY:10
+  Lore:
+    - '§o&cLegendary Thread Weaving material'
+  Options:
+    HideFlags: true
+    HideAttributes: true
+    Unbreakable: true
+
+legendary_undead_thread_essence:
+  Id: rabbit_foot
+  Display: '&8&lLegendary Undead Thread Essence'
+  Group: thread_weaving
+  Category: THREAD_WEAVING
+  Enchantments:
+    - DURABILITY:10
+  Lore:
+    - '§o&cLegendary Thread Weaving material'
+  Options:
+    HideFlags: true
+    HideAttributes: true
+    Unbreakable: true
+
+legendary_fire_thread_essence:
+  Id: rabbit_foot
+  Display: '&c&lLegendary Fire Thread Essence'
+  Group: thread_weaving
+  Category: THREAD_WEAVING
+  Enchantments:
+    - DURABILITY:10
+  Lore:
+    - '§o&cLegendary Thread Weaving material'
+  Options:
+    HideFlags: true
+    HideAttributes: true
+    Unbreakable: true
+
+legendary_water_thread_essence:
+  Id: rabbit_foot
+  Display: '&b&lLegendary Water Thread Essence'
+  Group: thread_weaving
+  Category: THREAD_WEAVING
+  Enchantments:
+    - DURABILITY:10
+  Lore:
+    - '§o&cLegendary Thread Weaving material'
+  Options:
+    HideFlags: true
+    HideAttributes: true
+    Unbreakable: true
+
+legendary_wild_thread_essence:
+  Id: rabbit_foot
+  Display: '&a&lLegendary Wild Thread Essence'
+  Group: thread_weaving
+  Category: THREAD_WEAVING
+  Enchantments:
+    - DURABILITY:10
+  Lore:
+    - '§o&cLegendary Thread Weaving material'
+  Options:
+    HideFlags: true
+    HideAttributes: true
+    Unbreakable: true
+
+legendary_poison_thread_essence:
+  Id: rabbit_foot
+  Display: '&2&lLegendary Poison Thread Essence'
+  Group: thread_weaving
+  Category: THREAD_WEAVING
+  Enchantments:
+    - DURABILITY:10
+  Lore:
+    - '§o&cLegendary Thread Weaving material'
+  Options:
+    HideFlags: true
+    HideAttributes: true
+    Unbreakable: true
+

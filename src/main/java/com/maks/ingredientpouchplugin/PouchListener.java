@@ -44,26 +44,44 @@ public class PouchListener implements Listener {
                 return;
             }
 
-            // --- [A] NAPRAWA SHIFT+PPM: --
-            // Jeśli gracz kliknął SHIFT+PPM w górnym GUI, usuwamy "ghost item" z eventu
-            if (event.isShiftClick() && event.isRightClick()) {
-                // Zapobiegamy duplikowaniu i przeniesieniu przedmiotu do EQ
-                event.setCurrentItem(null);
-
-                // Wywołaj okno do wpisania liczby
-                String itemId = gui.getItemIdBySlot(event.getSlot());
-                if (itemId != null) {
-                    this.promptWithdrawAmount(player, itemId);
-                    // Możesz zdecydować, czy chcesz zamykać GUI czy nie
-                    player.closeInventory();
-                }
-                return;
-            }
-            // --- [A] KONIEC fixu SHIFT+PPM ---
-
             // Sprawdzamy, czy kliknięto w górny inventory (nasze GUI)
             if (clickedInventory == event.getView().getTopInventory()) {
                 int clickedSlot = event.getSlot();
+
+                // --- Obsługa GUI wyboru kategorii ---
+                if (gui.isInCategorySelection()) {
+                    String category = gui.getCategoryBySlot(clickedSlot);
+                    if (category != null) {
+                        gui.openCategory(category);
+                    }
+                    return;
+                }
+
+                // --- Obsługa GUI z przedmiotami ---
+
+                // Przycisk powrotu do kategorii (slot 49)
+                if (clickedSlot == 49) {
+                    gui.openCategorySelection();
+                    return;
+                }
+
+                // --- [A] NAPRAWA SHIFT+PPM: --
+                // Jeśli gracz kliknął SHIFT+PPM w górnym GUI, usuwamy "ghost item" z eventu
+                if (event.isShiftClick() && event.isRightClick()) {
+                    // Zapobiegamy duplikowaniu i przeniesieniu przedmiotu do EQ
+                    event.setCurrentItem(null);
+
+                    // Wywołaj okno do wpisania liczby
+                    String itemId = gui.getItemIdBySlot(clickedSlot);
+                    if (itemId != null) {
+                        this.promptWithdrawAmount(player, itemId);
+                        // Możesz zdecydować, czy chcesz zamykać GUI czy nie
+                        player.closeInventory();
+                    }
+                    return;
+                }
+                // --- [A] KONIEC fixu SHIFT+PPM ---
+
                 // Obsługa przycisku "poprzednia strona"
                 if (clickedSlot == 45) {
                     if (gui.getCurrentPage() > 1) {
@@ -330,6 +348,9 @@ public class PouchListener implements Listener {
 
         String name1 = meta1.hasDisplayName() ? ChatColor.stripColor(meta1.getDisplayName()) : "";
         String name2 = meta2.hasDisplayName() ? ChatColor.stripColor(meta2.getDisplayName()) : "";
+
+        name1 = normalizeDisplayName(name1);
+        name2 = normalizeDisplayName(name2);
         if (!name1.equals(name2)) return false;
 
         List<String> lore1 = meta1.hasLore() ? meta1.getLore() : new ArrayList<>();
@@ -363,4 +384,18 @@ public class PouchListener implements Listener {
 
         return true;
     }
+
+    private String normalizeDisplayName(String name) {
+        if (name == null) {
+            return "";
+        }
+
+        switch (name.toLowerCase(java.util.Locale.ROOT)) {
+            case "andermant":
+                return "Anderium";
+            default:
+                return name;
+        }
+    }
 }
+

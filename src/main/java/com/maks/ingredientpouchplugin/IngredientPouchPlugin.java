@@ -38,6 +38,7 @@ public class IngredientPouchPlugin extends JavaPlugin {
         // Register commands
         this.getCommand("ingredient_pouch").setExecutor(new IngredientPouchCommand(this));
         this.getCommand("drop").setExecutor(new DropNotificationCommand(this));
+        this.getCommand("debugpouch").setExecutor(new DebugPouchCommand(this));
 
         // Register listeners
         new ItemPickupListener(this);
